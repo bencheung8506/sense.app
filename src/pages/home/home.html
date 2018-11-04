@@ -1,69 +1,41 @@
 <ion-header>
 	<ion-navbar>
-		<button ion-button menuToggle>
-			<ion-icon name="menu"></ion-icon>
-		</button>
-		<ion-title>Supermodular 2</ion-title>
+        <ion-buttons left> <button (click)="toProfilePage()"  class="navbutton" *ngIf="auth.authenticated" float-right> PROFILE </button> 
+        </ion-buttons>
+		<ion-title class="navtitle">
+			SENSE
+		</ion-title>
+        <ion-buttons right> <button (click)="toLoginPage()"  class="navbutton" *ngIf="!auth.authenticated" float-right> LOGIN </button> 
+        </ion-buttons>
+        <ion-buttons right> <button (click)="logout()" class="navbutton" *ngIf="auth.authenticated" float-right> LOGOUT </button> 
+        </ion-buttons>
 	</ion-navbar>
 </ion-header>
 
-<ion-content class="getting-started">
-	<div class="home-hello">
-		<img src="http://lorempixel.com/g/640/480/technics" />
-
-		<div class="hello-title" text-wrap>
-			<h1>ABC Corp Inc.</h1>
-			50 Market Street, San Francisco, California 94103, United States
-		</div>
-	</div>
-
-	<ion-row *ngFor="let tilePair of tiles">
-		<ion-col *ngFor="let tile of tilePair">
-			<ion-card class="tile" (click)="navigateTo(tile)">
-				<ion-card-content>
-					<ion-item>
-						<h1><ion-icon [name]="tile.icon"></ion-icon></h1>
-						<h2>{{tile.title}}</h2>
-					</ion-item>
-				</ion-card-content>
-			</ion-card>
+<ion-content no-bounce padding>
+	<h2 align="center"> Welcome to Sense!</h2>
+	<p align="center"> Please choose either one: </p>
+	<ion-grid class="home-grid">
+	<ion-row class="home-row1">
+		<ion-col col-6>
+			<button ion-button full name="forum" style="height: 100%;">
+				Forum
+			</button>
+		</ion-col>
+		<ion-col col-6>
+			<button ion-button full name="pairup" style="height: 100%;">
+				Pair-up*
+			</button>
 		</ion-col>
 	</ion-row>
 
-	<ion-row>
-		<ion-card class="quick-action" (click)="callUs()">
-			<ion-card-content>
-				<ion-icon name="phone-portrait"></ion-icon>
-				<span>Call us</span>
-			</ion-card-content>
-		</ion-card>
-	</ion-row>
-
-	<ion-row>
-		<ion-card class="quick-action" (click)="sendEmail()">
-			<ion-card-content>
-				<ion-icon name="mail"></ion-icon>
-				<span>Send us and Email</span>
-			</ion-card-content>
-		</ion-card>
-	</ion-row>
-
-	<ion-row>
-		<ion-card class="quick-action" (click)="getDirections()">
-			<ion-card-content>
-				<ion-icon name="compass"></ion-icon>
-				<span>Find us / Get directions</span>
-			</ion-card-content>
-		</ion-card>
-	</ion-row>
-
-	<ion-row>
-		<ion-card class="quick-action" (click)="openFacebookPage()">
-			<ion-card-content>
-				<ion-icon name="logo-facebook"></ion-icon>
-				<span>Visit us on Facebook</span>
-			</ion-card-content>
-		</ion-card>
-	</ion-row>
-
+    <ion-row>
+        <ion-col col-1>
+            <p> * </p>
+        </ion-col>
+        <ion-col col-11>
+            <p> You are recommended to apply for using the "Pair-up" function.<br><a> Please click here to sign up.</a></p>
+        </ion-col>
+    </ion-row>
+	</ion-grid>
 </ion-content>

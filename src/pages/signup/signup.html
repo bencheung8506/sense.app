@@ -9,12 +9,13 @@
 	<form (ngSubmit)="signup()" [formGroup]="form">
 		<ion-list inset>
 
-			<ion-item [ngClass]="{ invalid: emailErrors.hasError('*', ['touched']) }">
-				<ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
+			<ion-item [ngClass]="{ invalid: usernameErrors.hasError('*', ['touched']) }">
+				<ion-input type="text" placeholder="User Name" formControlName="username" autofocus required></ion-input>
 			</ion-item>
 
-			<div ngxErrors="email" #emailErrors="ngxErrors">
-				<div [ngxError]="['email', 'required']" [when]="['touched']">It should be a valid email</div>
+			<div ngxErrors="username" #usernameErrors="ngxErrors">
+				<div [ngxError]="['minlength', 'required']" [when]="['touched']">It should be at least 6 characters.</div>
+				<div [ngxError]="['pattern']" [when]="['touched']">Please use only alphabets and numbers.</div>
 			</div>
 
 			<ion-item [ngClass]="{ invalid: passwordErrors.hasError('*', ['touched']) }">
@@ -22,7 +23,7 @@
 			</ion-item>
 
 			<div ngxErrors="password" #passwordErrors="ngxErrors">
-				<div [ngxError]="['minlength', 'required']" [when]="['touched']">It should be at least 6 characters</div>
+				<div [ngxError]="['minlength', 'required']" [when]="['touched']">It should be at least 6 characters.</div>
 			</div>
 		</ion-list>
 

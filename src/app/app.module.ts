@@ -6,7 +6,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { StatusBar } from '@ionic-native/status-bar';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { Config } from '../config';
-
 import { ComponentsModule } from '../pages/components/components.module';
 import { GoogleMapsModule } from '../pages/google-maps/google-maps.module';
 import { HomeModule } from '../pages/home/home.module';
@@ -19,6 +18,9 @@ import { firebaseConfig } from '../config';
 import { LoginPage } from '../pages/login/login';
 import { AuthService } from '../services/auth.service';
 import { SignupPage } from '../pages/signup/signup';
+import { ProfilePageModule } from '../pages/profile/profile.module';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { ToastController } from 'ionic-angular';
 
 @NgModule({
 	declarations: [
@@ -31,15 +33,15 @@ import { SignupPage } from '../pages/signup/signup';
 		HttpModule,
 		IonicModule.forRoot(MyApp),
 		AgmCoreModule.forRoot(),
-
 		AngularFireModule.initializeApp(firebaseConfig.fire),
-
 		ComponentsModule,
 		NgxErrorsModule,
 		GoogleMapsModule,
 		HomeModule,
 		SlideBoxModule,
-		WordpressModule
+		WordpressModule,
+    	AngularFireDatabaseModule,
+    	ProfilePageModule
 	],
 	bootstrap: [IonicApp],
 	entryComponents: [
@@ -52,7 +54,8 @@ import { SignupPage } from '../pages/signup/signup';
 		StatusBar,
 		{provide: ErrorHandler, useClass: IonicErrorHandler},
 		AngularFireAuth,
-		AuthService
+		AuthService,
+    	ToastController
 	]
 })
 export class AppModule {

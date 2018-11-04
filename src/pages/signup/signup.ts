@@ -1,37 +1,65 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { HomePage } from '../home/home.page';
+import { ProfilePage } from '../profile/profile';
 import { AuthService } from '../../services/auth.service';
+import firebase from 'firebase';
+import { ToastController } from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Profile } from "../../model/profile.model";
+import { AngularFireDatabase} from "angularfire2/database";
 
 @Component({
 	selector: 'as-page-signup',
 	templateUrl: './signup.html'
 })
+
 export class SignupPage {
 	signupError: string;
 	form: FormGroup;
+	private auth: AuthService;
+	defaultProfile = {
+		valid: false
+	} as Profile;
 
 	constructor(
 		fb: FormBuilder,
 		private navCtrl: NavController,
-    private auth: AuthService
+    	auth: AuthService,
+    	private alertCtrl: AlertController,
+		private afAuth: AngularFireAuth,
+		private toast: ToastController, 
+        private afDatabase: AngularFireDatabase
 	) {
 		this.form = fb.group({
-			email: ['', Validators.compose([Validators.required, Validators.email])],
-			password: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
+			username: ['', Validators.compose([Validators.required, 
+				Validators.minLength(6), Validators.pattern('[a-zA-Z0-9]*')])],
+			password: ['', Validators.compose([Validators.required, 
+				Validators.minLength(6)])]
 		});
-  }
+		this.auth = auth;
+    }
 
-  signup() {
+    signup() {
 		let data = this.form.value;
 		let credentials = {
-			email: data.email,
+			email: data.username.concat("@sense.com"),
 			password: data.password
 		};
 		this.auth.signUp(credentials).then(
-			() => this.navCtrl.setRoot(HomePage),
+			() => {
+				this.navCtrl.setRoot(HomePage);
+				this.afAuth.authState.take(1).subscribe(data => {
+				if (data) {
+					this.afDatabase.object(`profile/${data.uid}`).set(this.defaultProfile);
+					this.toast.create({
+						message: `Welcome, ${data.email.split('@sense.com')[0]}.`,
+						duration: 2000
+					}).present();
+				}});
+			},
 			error => this.signupError = error.message
 		);
-  }
+    }
 }

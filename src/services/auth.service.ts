@@ -15,20 +15,33 @@ export class AuthService {
 
 	signInWithEmail(credentials) {
 		console.log('Sign in with email');
-		return this.afAuth.auth.signInWithEmailAndPassword(credentials.email,
-			 credentials.password);
+		return this.afAuth.auth.signInWithEmailAndPassword(credentials.email, 
+			credentials.password);
 	}
 
 	signUp(credentials) {
-		return this.afAuth.auth.createUserWithEmailAndPassword(credentials.email,credentials.password);
+		return this.afAuth.auth.createUserWithEmailAndPassword(credentials.email, 
+			credentials.password);
 	}
 
 	get authenticated(): boolean {
 		return this.user !== null;
 	}
 
-	getEmail() {
+	get email() {
 		return this.user && this.user.email;
+	}
+
+	get uid() {
+		return this.user && this.user.uid;
+	}
+
+	getUserName() {
+		if (this.user) {
+			let email = this.user.email;
+			return email.split(`@sense.com`)[0];
+		}
+		return '';
 	}
 
 	signOut(): Promise<void> {
