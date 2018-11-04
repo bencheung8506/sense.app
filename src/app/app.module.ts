@@ -21,6 +21,8 @@ import { SignupPage } from '../pages/signup/signup';
 import { ProfilePageModule } from '../pages/profile/profile.module';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { ToastController } from 'ionic-angular';
+import { ProfileEditPageModule } from '../pages/profile-edit/profile-edit.module';
+import { Component, enableProdMode } from "@angular/core";
 
 @NgModule({
 	declarations: [
@@ -41,7 +43,8 @@ import { ToastController } from 'ionic-angular';
 		SlideBoxModule,
 		WordpressModule,
     	AngularFireDatabaseModule,
-    	ProfilePageModule
+    	ProfilePageModule,
+    	ProfileEditPageModule
 	],
 	bootstrap: [IonicApp],
 	entryComponents: [
@@ -60,3 +63,4 @@ import { ToastController } from 'ionic-angular';
 })
 export class AppModule {
 }
+enableProdMode();

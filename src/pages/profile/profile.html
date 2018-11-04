@@ -8,28 +8,105 @@
 
 
 <ion-content padding>
-    <ion-grid>
+    <ion-card>
+    <ion-card-header> Basic information </ion-card-header>
+    <ion-card-content> 
+        <ion-row align-items-center>
+            <ion-col col-5>
+                <ion-label class="label-pad"> User name </ion-label>
+            </ion-col>
+            <ion-col col-7>
+                <p> {{ auth.email.split('@sense.com')[0] }} </p>
+            </ion-col>
+        </ion-row>
 
-    <ion-row align-items-center>
-        <ion-col col-2>
-            <ion-label class="label-pad"> Age: </ion-label>
-        </ion-col>
-        <ion-col col-10>
-            <p *ngIf = "(profileData | async)?.age"> {{ (profileData| async)?.age }} </p>
-            <p *ngIf = "!(profileData| async)?.age">  Not stated  </p>
-        </ion-col>
-    </ion-row>
+        <ion-row align-items-center>
+            <ion-col col-5>
+                <ion-label class="label-pad"> Age </ion-label>
+            </ion-col>
+            <ion-col col-7>
+                <p *ngIf = "currentUser.age"> {{ currentUser.age }} </p>
+                <p *ngIf = "!currentUser.age">  Not stated  </p>
+            </ion-col>
+        </ion-row> 
+    </ion-card-content>
+    </ion-card>
 
-    <ion-row align-items-center>
-        <ion-col col-2>
-            <ion-label class="label-pad"> SEN type: </ion-label>
-        </ion-col>
-        <ion-col col-10>
-            <p> {{SENlist()}} </p>
-        </ion-col>
-    </ion-row>
+    
+    <ion-card>
+    <ion-card-header> SEN information </ion-card-header>
+    <ion-card-content>
+        <ion-row align-items-center>
+            <ion-col col-5>
+                <ion-label class="label-pad"> Is SEN </ion-label>
+            </ion-col>
+            <ion-col col-7>
+                <p *ngIf = "currentUser.isSEN == true"> Yes </p>
+                <p *ngIf = "currentUser.isSEN == false">  No  </p>
+                <p *ngIf = "currentUser.isSEN == null">  Not stated  </p>
+            </ion-col>
+        </ion-row>
 
-    <button ion-button block (click)="editProfile()"> Edit Profile </button>
+        <ion-row align-items-center>
+            <ion-col col-5>
+                <ion-label class="label-pad"> SEN type </ion-label>
+            </ion-col>
+            <ion-col col-7>
+                <p> {{ SENlist }} </p>
+            </ion-col>
+        </ion-row>
+    </ion-card-content>
+    </ion-card>
 
-    </ion-grid>    
+    <ion-card>
+    <ion-card-header> Short term goals </ion-card-header>
+    <ion-card-content>
+        <ion-row align-items-center>
+            <ion-col col-5>
+                <ion-label class="label-pad"> Academic </ion-label>
+            </ion-col>
+            <ion-col col-7>
+                <p *ngIf = "currentUser.academicGoal == null"> Not stated </p>
+                <p *ngIf = "currentUser.academicGoal == '' ">  None  </p>
+                <p *ngIf = "currentUser.academicGoal">  {{ currentUser.academicGoal }}  </p>
+            </ion-col>
+        </ion-row>
+
+        <ion-row align-items-center>
+            <ion-col col-5>
+                <ion-label class="label-pad"> Work </ion-label>
+            </ion-col>
+            <ion-col col-7>
+                <p *ngIf = "currentUser.workGoal == null"> Not stated </p>
+                <p *ngIf = "currentUser.workGoal == '' ">  None  </p>
+                <p *ngIf = "currentUser.workGoal">  {{ currentUser.workGoal }}  </p>
+            </ion-col>
+        </ion-row>
+
+        <ion-row align-items-center>
+            <ion-col col-5>
+                <ion-label class="label-pad"> Social </ion-label>
+            </ion-col>
+            <ion-col col-7>
+                <p *ngIf = "currentUser.socialGoal == null"> Not stated </p>
+                <p *ngIf = "currentUser.socialGoal == '' ">  None  </p>
+                <p *ngIf = "currentUser.socialGoal">  {{ currentUser.socialGoal }}  </p>
+            </ion-col>
+        </ion-row>
+
+        <ion-row align-items-center>
+            <ion-col col-5>
+                <ion-label class="label-pad"> Lifestyle </ion-label>
+            </ion-col>
+            <ion-col col-7>
+                <p *ngIf = "currentUser.lifestyleGoal == null"> Not stated </p>
+                <p *ngIf = "currentUser.lifestyleGoal == '' ">  None  </p>
+                <p *ngIf = "currentUser.lifestyleGoal">  {{ currentUser.lifestyleGoal }}  </p>
+            </ion-col>
+        </ion-row>
+    </ion-card-content>
+    </ion-card>
+
+    <button ion-button block (click)="toProfileEditPage()"> Edit Profile </button>
+ 
 </ion-content>

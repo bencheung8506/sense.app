@@ -33414,3 +33414,19 @@ page-home .title.title-md {
 page-profile .label-pad {
   padding-left: 10px;
 }
+
+page-profile ion-card {
+  border-top: 5px solid lightblue;
+}
+
+page-profile-edit .label-pad {
+  padding-left: 10px;
+}
+
+page-profile-edit ion-card {
+  border-top: 5px solid lightblue;
+}
+
+page-profile-edit .label-header {
+  border-left: 2px solid lightblue;
+}
