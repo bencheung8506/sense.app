@@ -33358,6 +33358,17 @@ ion-navbar.toolbar {
   text-align: center;
 }
 
+page-chat .btn-align .button-inner {
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+page-chat-box ion-content > .scroll-content {
+  margin-bottom: 80px;
+}
+
 page-home .scroll-content {
   overflow: hidden;
 }
@@ -33376,7 +33387,7 @@ page-home .home-grid {
 }
 
 page-home .home-row1 {
-  height: 70%;
+  height: 80%;
   padding-bottom: 10px;
 }
 

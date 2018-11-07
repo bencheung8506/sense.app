@@ -36,7 +36,7 @@ export class AuthService {
 		return this.user && this.user.uid;
 	}
 
-	getUserName() {
+	get name() {
 		if (this.user) {
 			let email = this.user.email;
 			return email.split(`@sense.com`)[0];

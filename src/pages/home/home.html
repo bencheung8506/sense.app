@@ -1,20 +1,21 @@
 <ion-header>
 	<ion-navbar>
-        <ion-buttons left> <button (click)="toProfilePage()"  class="navbutton" *ngIf="auth.authenticated" float-right> PROFILE </button> 
+        <ion-buttons left> <button (click)="toProfilePage()" class="navbutton" *ngIf="auth.authenticated" float-right> <ion-icon name="ios-construct"></ion-icon> </button> 
         </ion-buttons>
 		<ion-title class="navtitle">
 			SENSE
 		</ion-title>
-        <ion-buttons right> <button (click)="toLoginPage()"  class="navbutton" *ngIf="!auth.authenticated"> LOGIN </button> 
+        <ion-buttons right> <button (click)="toLoginPage()" class="navbutton" *ngIf="!auth.authenticated"> <ion-icon name="ios-log-in"></ion-icon> </button> 
         </ion-buttons>
-        <ion-buttons right> <button (click)="logout()" class="navbutton" *ngIf="auth.authenticated"> LOGOUT </button> 
+        <ion-buttons right> <button (click)="logout()" class="navbutton" *ngIf="auth.authenticated"> <ion-icon name="ios-log-out"></ion-icon> </button> 
         </ion-buttons>
 	</ion-navbar>
 </ion-header>
 
 <ion-content no-bounce padding>
 	<h2 align="center"> Welcome to Sense!</h2>
-	<p align="center"> Please choose either one: </p>
+	<p align="center" *ngIf="auth.authenticated"> Please choose either one: </p>
+    <p align="center" *ngIf="!auth.authenticated"> Please log-in to access the following functions: </p>
 	<ion-grid class="home-grid">
 	<ion-row class="home-row1">
 		<ion-col col-6>
@@ -23,19 +24,13 @@
 			</button>
 		</ion-col>
 		<ion-col col-6>
-			<button ion-button full name="pairup" style="height: 100%;" (click)="toPairUpPage()">
-				Pair-up*
+            <button ion-button full name="pairup" style="height: 100%;" *ngIf="!auth.authenticated" (click)="toPairUpNoLoginPage() ">
+                Pair-up
+            </button>
+			<button ion-button full name="pairup" style="height: 100%;" *ngIf="auth.authenticated" (click)="toPairUpPage()">
+				Pair-up
 			</button>
 		</ion-col>
 	</ion-row>
-
-    <ion-row>
-        <ion-col col-1>
-            <p> * </p>
-        </ion-col>
-        <ion-col col-11>
-            <p> You are recommended to apply for using the "Pair-up" function.<br><a> Please click here to sign up.</a></p>
-        </ion-col>
-    </ion-row>
-	</ion-grid>
+    </ion-grid>
 </ion-content>

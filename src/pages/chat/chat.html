@@ -1,9 +1,22 @@
 <ion-content padding>
-    <h6> Please select the users you would like to chat with. </h6>
-
+    <ion-row align-items-center>
+        <ion-col col-10>
+            <p> Please select the user you would like to chat with. </p>
+        </ion-col>
+        <ion-col col-2>
+            <button ion-button icon-only clear (click)='usersReload()'>
+                <ion-icon ion-icon name='sync'>
+                </ion-icon> 
+            </button>
+        </ion-col>
+    </ion-row>
+    
     <ion-list>
-        <ion-item *ngFor="let user of users">
-            {{user.name}}
+        <ion-item *ngFor="let user of users" (click)="toChat(user)" align-items-center>
+            <button ion-button clear full class="btn-align"> 
+                <ion-icon name='contact' style='font-size: 24px;'></ion-icon> 
+                &nbsp; <p> {{user.name}} </p>
+            </button>
         </ion-item>
     </ion-list>
 </ion-content>

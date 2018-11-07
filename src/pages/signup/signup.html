@@ -10,7 +10,7 @@
 		<ion-list inset>
 
 			<ion-item [ngClass]="{ invalid: usernameErrors.hasError('*', ['touched']) }">
-				<ion-input type="text" placeholder="User Name" formControlName="username" autofocus required></ion-input>
+				<ion-input type="text" placeholder="User Name" formControlName="username" required></ion-input>
 			</ion-item>
 
 			<div ngxErrors="username" #usernameErrors="ngxErrors">

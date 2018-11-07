@@ -11,6 +11,7 @@ import { AngularFireDatabase, AngularFireList, AngularFireObject } from "angular
 import { AngularFireAuth } from 'angularfire2/auth';
 import 'rxjs/add/operator/take';
 import { PairUpPage } from '../pair-up/pair-up';
+import { PairUpNoLoginPage } from '../pair-up-no-login/pair-up-no-login';
 
 @Component({
     selector: 'page-home',
@@ -57,5 +58,9 @@ export class HomePage {
 
 	toPairUpPage() {
 		this.navCtrl.push(PairUpPage);
+	}
+
+	toPairUpNoLoginPage() {
+		this.navCtrl.push(PairUpNoLoginPage);
 	}
 }

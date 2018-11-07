@@ -30,6 +30,10 @@ import { PairUpPage } from '../pages/pair-up/pair-up';
 import { ChatPage } from '../pages/chat/chat';
 import { CalendarPage } from '../pages/calendar/calendar';
 import { ToDoListPage } from '../pages/to-do-list/to-do-list';
+import { PipesModule } from '../pipes/pipes.module';
+import { PairUpNoLoginPage } from '../pages/pair-up-no-login/pair-up-no-login'
+import { ChatBoxPage } from '../pages/chat-box/chat-box'
+
 
 @NgModule({
 	declarations: [
@@ -40,12 +44,17 @@ import { ToDoListPage } from '../pages/to-do-list/to-do-list';
 		PairUpPage,
 		ChatPage,
 		CalendarPage,
-		ToDoListPage
+		ToDoListPage,
+		PairUpNoLoginPage,
+		ChatBoxPage 
 	],
 	imports: [
 		BrowserModule,
 		HttpModule,
-		IonicModule.forRoot(MyApp, {tabsPlacement: 'top'}),
+		IonicModule.forRoot(MyApp, {
+			tabsPlacement: 'top',
+			tabsHideOnSubPages: false,
+		}),
 		AgmCoreModule.forRoot(),
 		AngularFireModule.initializeApp(firebaseConfig.fire),
 		ComponentsModule,
@@ -57,7 +66,8 @@ import { ToDoListPage } from '../pages/to-do-list/to-do-list';
     	AngularFireDatabaseModule,
     	ProfilePageModule, 
     	CustomFormsModule, 
-    	ReactiveFormsModule
+    	ReactiveFormsModule,
+		PipesModule
 	],
 	bootstrap: [IonicApp],
 	entryComponents: [
@@ -68,7 +78,9 @@ import { ToDoListPage } from '../pages/to-do-list/to-do-list';
 		PairUpPage,
 		ChatPage,
 		CalendarPage,
-		ToDoListPage
+		ToDoListPage,
+		PairUpNoLoginPage,
+		ChatBoxPage 
 	],
 	providers: [
 		Config,
