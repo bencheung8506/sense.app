@@ -33427,6 +33427,14 @@ page-profile-edit ion-card {
   border-top: 5px solid lightblue;
 }
 
+page-profile-edit .error-card {
+  border-top: 5px solid red !important;
+}
+
 page-profile-edit .label-header {
   border-left: 2px solid lightblue;
+}
+
+page-profile-edit .border-box {
+  border: 1px inset;
 }

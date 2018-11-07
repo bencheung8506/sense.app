@@ -7,7 +7,15 @@ page-profile-edit {
         border-top: 5px solid lightblue
     }
 
+    .error-card {
+        border-top: 5px solid red !important
+    }
+
     .label-header {
         border-left: 2px solid lightblue;
+    }
+
+    .border-box {
+        border: 1px inset;
     }
 }

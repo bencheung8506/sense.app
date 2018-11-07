@@ -1,11 +1,13 @@
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>PROFILE</ion-title>
-  </ion-navbar>
-
+    <ion-navbar>
+        <ion-title>PROFILE</ion-title>
+    </ion-navbar>
 </ion-header>
 
+<ion-tabs>
+  <ion-tab tabIcon="log-out" tabTitle="Todos" [root]="tab1"></ion-tab>
+  <ion-tab tabIcon="log-in" tabTitle="Groceries" [root]="tab2"></ion-tab>
+</ion-tabs>
 
 <ion-content padding>
     <ion-card>
@@ -31,7 +33,6 @@
         </ion-row> 
     </ion-card-content>
     </ion-card>
-
     
     <ion-card>
     <ion-card-header> SEN information </ion-card-header>
@@ -66,8 +67,7 @@
                 <ion-label class="label-pad"> Academic </ion-label>
             </ion-col>
             <ion-col col-7>
-                <p *ngIf = "currentUser.academicGoal == null"> Not stated </p>
-                <p *ngIf = "currentUser.academicGoal == '' ">  None  </p>
+                <p *ngIf = "!currentUser.academicGoal" style="color:#bbbbbb;"> Not stated </p>
                 <p *ngIf = "currentUser.academicGoal">  {{ currentUser.academicGoal }}  </p>
             </ion-col>
         </ion-row>
@@ -77,8 +77,7 @@
                 <ion-label class="label-pad"> Work </ion-label>
             </ion-col>
             <ion-col col-7>
-                <p *ngIf = "currentUser.workGoal == null"> Not stated </p>
-                <p *ngIf = "currentUser.workGoal == '' ">  None  </p>
+                <p *ngIf = "!currentUser.workGoal" style="color:#bbbbbb;"> Not stated </p>
                 <p *ngIf = "currentUser.workGoal">  {{ currentUser.workGoal }}  </p>
             </ion-col>
         </ion-row>
@@ -88,8 +87,7 @@
                 <ion-label class="label-pad"> Social </ion-label>
             </ion-col>
             <ion-col col-7>
-                <p *ngIf = "currentUser.socialGoal == null"> Not stated </p>
-                <p *ngIf = "currentUser.socialGoal == '' ">  None  </p>
+                <p *ngIf = "!currentUser.socialGoal" style="color:#bbbbbb;"> Not stated </p>
                 <p *ngIf = "currentUser.socialGoal">  {{ currentUser.socialGoal }}  </p>
             </ion-col>
         </ion-row>
@@ -99,8 +97,7 @@
                 <ion-label class="label-pad"> Lifestyle </ion-label>
             </ion-col>
             <ion-col col-7>
-                <p *ngIf = "currentUser.lifestyleGoal == null"> Not stated </p>
-                <p *ngIf = "currentUser.lifestyleGoal == '' ">  None  </p>
+                <p *ngIf = "!currentUser.lifestyleGoal" style="color:#bbbbbb;"> Not stated </p>
                 <p *ngIf = "currentUser.lifestyleGoal">  {{ currentUser.lifestyleGoal }}  </p>
             </ion-col>
         </ion-row>

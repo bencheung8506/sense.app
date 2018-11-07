@@ -10,6 +10,7 @@ import { Profile } from "../../model/profile.model";
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from "angularfire2/database";
 import { AngularFireAuth } from 'angularfire2/auth';
 import 'rxjs/add/operator/take';
+import { PairUpPage } from '../pair-up/pair-up';
 
 @Component({
     selector: 'page-home',
@@ -52,5 +53,9 @@ export class HomePage {
 
 	signup(){
 	  	this.navCtrl.push(SignupPage);
+	}
+
+	toPairUpPage() {
+		this.navCtrl.push(PairUpPage);
 	}
 }

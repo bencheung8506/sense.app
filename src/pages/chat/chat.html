@@ -1,0 +1,9 @@
+<ion-content padding>
+    <h6> Please select the users you would like to chat with. </h6>
+
+    <ion-list>
+        <ion-item *ngFor="let user of users">
+            {{user.name}}
+        </ion-item>
+    </ion-list>
+</ion-content>

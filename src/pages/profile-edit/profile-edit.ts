@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Profile } from "../../model/profile.model";
@@ -10,27 +10,50 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { ChangeDetectorRef, OnChanges, OnInit } from "@angular/core";
 import { ToastController } from 'ionic-angular';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { NgxErrorsModule } from '@ultimate/ngxerrors';
+import { Content } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-profile-edit',
-  templateUrl: 'profile-edit.html',
+    selector: 'page-profile-edit',
+    templateUrl: 'profile-edit.html',
 })
 export class ProfileEditPage implements OnInit{
     profile = {} as Profile;
     profileError: string;
     profileData: Observable<any>;
     profileDataNg: AngularFireObject<Profile>;
-    
+    profileEditForm: FormGroup;
+    profileEditError: string;
+
+    @ViewChild(Content) content: Content; 
     currentUser = {} as Profile;
 
     constructor(private afAuth: AngularFireAuth, 
         public navCtrl: NavController, 
         public navParams: NavParams, 
         public auth: AuthService,
+        fb: FormBuilder,
         private cd: ChangeDetectorRef,
         private toast: ToastController,
         private afDatabase: AngularFireDatabase) {
+        this.profileEditForm = fb.group({
+            age: ['', Validators.compose([Validators.required])],
+            isSEN: [ , ],
+            ADHD: [ , ],
+            PH: [ , ],
+            SL: [ , ],
+            AU: [ , ],
+            VI: [ , ],
+            SI: [ , ],
+            HI: [ , ],
+            MI: [ , ],
+            academicGoal: ['' , ],
+            workGoal: ['' , ],
+            socialGoal: ['' , ],
+            lifestyleGoal: ['' , ],
+        });
     }
 
     ngOnInit() {
@@ -40,14 +63,51 @@ export class ProfileEditPage implements OnInit{
             this.profileData = this.profileDataNg.valueChanges();
             this.profileDataNg.snapshotChanges().subscribe(action => {
                 this.currentUser = action.payload.val();
+                this.profileEditForm.controls['isSEN'].setValue(this.currentUser.isSEN);
             });
         });
     }
 
     editProfile() {
+        let data = this.profileEditForm.value;
+
+        data.ADHD = (data.ADHD == true);
+        data.PH = (data.PH == true);
+        data.SL = (data.SL == true);
+        data.AU = (data.AU == true);
+        data.VI = (data.VI == true);
+        data.SI = (data.SI == true);
+        data.HI = (data.HI == true);
+        data.MI = (data.MI == true);
+        let SENbool = data.ADHD || data.PH || data.SL || data.AU
+            || data.VI || data.SI || data.HI || data.MI;
+        if (!SENbool && data.isSEN) {
+            this.profileEditError = 
+                'You have selected "Yes" for "Is SEN", but you have not selected any SEN type.';
+            this.content.scrollToTop();
+            return;
+        }
+
+        if (data.academicGoal == null)
+            data.academicGoal = '';
+        if (data.workGoal == null)
+            data.workGoal = '';
+        if (data.socialGoal == null)
+            data.socialGoal = '';
+        if (data.lifeStlyeGoal == null)
+            data.lifeStlyeGoal = '';
+        
+        data.academicGoal = data.academicGoal.trimEnd();
+        data.workGoal = data.workGoal.trimEnd();
+        data.socialGoal = data.socialGoal.trimEnd();
+        data.lifeStlyeGoal = data.lifeStlyeGoal.trimEnd();
+        data.valid = true;
+
         this.afAuth.authState.take(1).subscribe(auth => {
-            this.afDatabase.object(`profile/${auth.uid}`).update(this.profile)
-                .then(() => {this.navCtrl.setRoot(HomePage);
+            this.afDatabase.object(`profile/${auth.uid}`).update(data)
+                .then(() => {
+                    this.profileEditError = '';
+                    this.navCtrl.setRoot(HomePage);
                     this.toast.create({
                         message: `Profile edit is successful.`,
                         duration: 2000
@@ -55,5 +115,6 @@ export class ProfileEditPage implements OnInit{
                 },
                 error => this.profileError = error.message);
         });
+        console.log(this.currentUser);
     }
 }

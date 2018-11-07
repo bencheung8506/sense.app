@@ -23,17 +23,29 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { ToastController } from 'ionic-angular';
 import { ProfileEditPageModule } from '../pages/profile-edit/profile-edit.module';
 import { Component, enableProdMode } from "@angular/core";
+import { ProfileEditPage } from '../pages/profile-edit/profile-edit';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CustomFormsModule } from 'ng2-validation';
+import { PairUpPage } from '../pages/pair-up/pair-up';
+import { ChatPage } from '../pages/chat/chat';
+import { CalendarPage } from '../pages/calendar/calendar';
+import { ToDoListPage } from '../pages/to-do-list/to-do-list';
 
 @NgModule({
 	declarations: [
 		MyApp,
 		LoginPage,
-		SignupPage
+		SignupPage,
+		ProfileEditPage,
+		PairUpPage,
+		ChatPage,
+		CalendarPage,
+		ToDoListPage
 	],
 	imports: [
 		BrowserModule,
 		HttpModule,
-		IonicModule.forRoot(MyApp),
+		IonicModule.forRoot(MyApp, {tabsPlacement: 'top'}),
 		AgmCoreModule.forRoot(),
 		AngularFireModule.initializeApp(firebaseConfig.fire),
 		ComponentsModule,
@@ -43,14 +55,20 @@ import { Component, enableProdMode } from "@angular/core";
 		SlideBoxModule,
 		WordpressModule,
     	AngularFireDatabaseModule,
-    	ProfilePageModule,
-    	ProfileEditPageModule
+    	ProfilePageModule, 
+    	CustomFormsModule, 
+    	ReactiveFormsModule
 	],
 	bootstrap: [IonicApp],
 	entryComponents: [
 		MyApp,
 		LoginPage,
-		SignupPage
+		SignupPage,
+		ProfileEditPage,
+		PairUpPage,
+		ChatPage,
+		CalendarPage,
+		ToDoListPage
 	],
 	providers: [
 		Config,

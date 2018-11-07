@@ -8,7 +8,7 @@ import firebase from 'firebase';
 import { ToastController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Profile } from "../../model/profile.model";
-import { AngularFireDatabase} from "angularfire2/database";
+import { AngularFireDatabase } from "angularfire2/database";
 
 @Component({
 	selector: 'as-page-signup',
@@ -20,7 +20,11 @@ export class SignupPage {
 	form: FormGroup;
 	private auth: AuthService;
 	defaultProfile = {
-		valid: false
+		valid: false,
+		academicGoal: '',
+		workGoal: '',
+		socialGoal: '',
+		lifestyleGoal: '',
 	} as Profile;
 
 	constructor(
@@ -47,12 +51,18 @@ export class SignupPage {
 			email: data.username.concat("@sense.com"),
 			password: data.password
 		};
+		let userProfile = {
+			id: '-1',
+			name: data.username,
+		}
 		this.auth.signUp(credentials).then(
 			() => {
 				this.navCtrl.setRoot(HomePage);
 				this.afAuth.authState.take(1).subscribe(data => {
 				if (data) {
+					userProfile.id = data.uid;
 					this.afDatabase.object(`profile/${data.uid}`).set(this.defaultProfile);
+					this.afDatabase.object(`userList/${data.uid}`).set(userProfile);
 					this.toast.create({
 						message: `Welcome, ${data.email.split('@sense.com')[0]}.`,
 						duration: 2000

@@ -1,13 +1,19 @@
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>PROFILE EDIT</ion-title>
-  </ion-navbar>
-
+    <ion-navbar>
+        <ion-title>PROFILE EDIT</ion-title>
+    </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
+    <form [formGroup]="profileEditForm">
+
+    <ion-card class="error-card" [hidden]="!profileEditError">
+    <ion-card-header> Error </ion-card-header>
+    <ion-card-content> 
+        <p class="label-pad"> {{ profileEditError }} </p>
+    </ion-card-content>
+    </ion-card>
+
     <ion-card>
     <ion-card-header> Basic information </ion-card-header>
     <ion-card-content> 
@@ -17,8 +23,8 @@
             </ion-col>
             <ion-col col-7>
                 <ion-item no-padding>
-                <ion-input type="text" [value]="currentUser?.age" 
-                [placeholder]="currentUser?.age ? currentUser.age : 'Not stated' " [(ngModel)]="profile.age"></ion-input>
+                <ion-input name="age" type="number" [value]="currentUser?.age" 
+                [placeholder]="currentUser?.age ? currentUser.age : 'Not stated' " formControlName="age" pattern="[0-9]*" [min]="5" [max]="30"></ion-input>
                 </ion-item>
             </ion-col>
         </ion-row> 
@@ -31,17 +37,17 @@
         <ion-row align-items-center>
             <ion-label class="label-pad label-header" > Is SEN </ion-label>
         </ion-row>
-        <ion-row align-items-center radio-group [(ngModel)]="profile.isSEN">
+        <ion-row align-items-center radio-group formControlName="isSEN" required>
             <ion-col>
                 <ion-item no-padding>
                     <ion-label class="label-pad"> Yes </ion-label>
-                    <ion-radio [value]="true" [checked]="currentUser?.isSEN==true"></ion-radio>
+                    <ion-radio [value]="true"></ion-radio>
                 </ion-item>
             </ion-col>
             <ion-col>
                 <ion-item no-padding>
                     <ion-label class="label-pad"> No </ion-label>
-                    <ion-radio [value]="false" [checked]="currentUser?.isSEN==false"></ion-radio>
+                    <ion-radio [value]="false"></ion-radio>
                 </ion-item>
             </ion-col>
         </ion-row> 
@@ -54,7 +60,8 @@
                 <ion-item no-padding>
                     <ion-label class="label-pad"> ADHD </ion-label>
                     <ion-checkbox 
-                    [checked]="currentUser?.ADHD" [(ngModel)]="profile.ADHD"> 
+                    [checked]="currentUser?.ADHD && profileEditForm.value.isSEN" formControlName="ADHD"
+                    [disabled]="!profileEditForm.value.isSEN"> 
                     </ion-checkbox>
                 </ion-item>
             </ion-col>
@@ -62,7 +69,8 @@
                 <ion-item no-padding>
                     <ion-label class="label-pad"> PH </ion-label>
                     <ion-checkbox 
-                    [checked]="currentUser?.PH" [(ngModel)]="profile.PH"> 
+                    [checked]="currentUser?.PH && profileEditForm.value.isSEN" formControlName="PH"
+                    [disabled]="!profileEditForm.value.isSEN"> 
                     </ion-checkbox>
                 </ion-item>
             </ion-col>
@@ -72,7 +80,8 @@
                 <ion-item no-padding>
                     <ion-label class="label-pad"> SL </ion-label>
                     <ion-checkbox 
-                    [checked]="currentUser?.SL" [(ngModel)]="profile.SL"> 
+                    [checked]="currentUser?.SL && profileEditForm.value.isSEN" formControlName="SL"
+                    [disabled]="!profileEditForm.value.isSEN"> 
                     </ion-checkbox>
                 </ion-item>
             </ion-col>
@@ -80,7 +89,8 @@
                 <ion-item no-padding>
                     <ion-label class="label-pad"> AU </ion-label>
                     <ion-checkbox 
-                    [checked]="currentUser?.AU" [(ngModel)]="profile.AU"> 
+                    [checked]="currentUser?.AU && profileEditForm.value.isSEN" formControlName="AU"
+                    [disabled]="!profileEditForm.value.isSEN"> 
                     </ion-checkbox>
                 </ion-item>
             </ion-col>
@@ -90,7 +100,8 @@
                 <ion-item no-padding>
                     <ion-label class="label-pad"> VI </ion-label>
                     <ion-checkbox 
-                    [checked]="currentUser?.VI" [(ngModel)]="profile.VI"> 
+                    [checked]="currentUser?.VI && profileEditForm.value.isSEN" formControlName="VI"
+                    [disabled]="!profileEditForm.value.isSEN"> 
                     </ion-checkbox>
                 </ion-item>
             </ion-col>
@@ -98,7 +109,8 @@
                 <ion-item no-padding>
                     <ion-label class="label-pad"> SI </ion-label>
                     <ion-checkbox 
-                    [checked]="currentUser?.SI" [(ngModel)]="profile.SI"> 
+                    [checked]="currentUser?.SI && profileEditForm.value.isSEN" formControlName="SI"
+                    [disabled]="!profileEditForm.value.isSEN"> 
                     </ion-checkbox>
                 </ion-item>
             </ion-col>
@@ -108,7 +120,8 @@
                 <ion-item no-padding>
                     <ion-label class="label-pad"> HI </ion-label>
                     <ion-checkbox 
-                    [checked]="currentUser?.HI" [(ngModel)]="profile.HI"> 
+                    [checked]="currentUser?.HI && profileEditForm.value.isSEN" formControlName="HI"
+                    [disabled]="!profileEditForm.value.isSEN"> 
                     </ion-checkbox>
                 </ion-item>
             </ion-col>
@@ -116,13 +129,62 @@
                 <ion-item no-padding>
                     <ion-label class="label-pad"> MI </ion-label>
                     <ion-checkbox 
-                    [checked]="currentUser?.MI" [(ngModel)]="profile.MI"> 
+                    [checked]="currentUser?.MI && profileEditForm.value.isSEN" formControlName="MI"
+                    [disabled]="!profileEditForm.value.isSEN"> 
                     </ion-checkbox>
                 </ion-item>
             </ion-col>
         </ion-row> 
     </ion-card-content>
     </ion-card>
+    
+    <ion-card>
+    <ion-card-header> Short term goals </ion-card-header>
+    <ion-card-content> 
+        <ion-row align-items-center>
+            <ion-checkbox [checked]='currentUser?.academicGoal !="" ' #aGoalBox> 
+            </ion-checkbox>
+            <ion-label class="label-pad"> Academic (e.g. exam, test etc.) </ion-label>
+        </ion-row>
+        <ion-row align-items-center>
+            <ion-item no-padding>
+            <ion-input formControlName="academicGoal" [disabled]="!aGoalBox.value" [value]="aGoalBox.value ? currentUser?.academicGoal : '' " placeholder="Not stated"> </ion-input>
+            </ion-item>
+        </ion-row> 
+        <ion-row align-items-center>
+            <ion-checkbox [checked]='currentUser?.workGoal != ""' #wGoalBox> 
+            </ion-checkbox>
+            <ion-label class="label-pad"> Work (e.g. find a job etc.) </ion-label>
+        </ion-row>
+        <ion-row align-items-center>
+            <ion-item no-padding>
+            <ion-input formControlName="workGoal" [disabled]="!wGoalBox.value" [value]="wGoalBox.value ? currentUser?.workGoal : '' " placeholder="Not stated"> </ion-input>
+            </ion-item>
+        </ion-row> 
+        <ion-row align-items-center>
+            <ion-checkbox [checked]='currentUser?.socialGoal !="" ' #sGoalBox> 
+            </ion-checkbox>
+            <ion-label class="label-pad"> Social (e.g. make new friends etc.) </ion-label>
+        </ion-row>
+        <ion-row align-items-center>
+            <ion-item no-padding>
+            <ion-input formControlName="socialGoal" [disabled]="!sGoalBox.value" [value]="sGoalBox.value ? currentUser?.socialGoal : '' " placeholder="Not stated"> </ion-input>
+            </ion-item>
+        </ion-row> 
+        <ion-row align-items-center>
+            <ion-checkbox [checked]='currentUser?.lifestyleGoal !="" ' #lGoalBox> 
+            </ion-checkbox>
+            <ion-label class="label-pad"> Lifestyle (e.g. punctuality etc.) </ion-label>
+        </ion-row>
+        <ion-row align-items-center>
+            <ion-item no-padding>
+            <ion-input formControlName="lifestyleGoal" [disabled]="!lGoalBox.value" [value]="lGoalBox.value ? currentUser?.lifestyleGoal : '' " placeholder="Not stated"> </ion-input>
+            </ion-item>
+        </ion-row> 
+    </ion-card-content>
+    </ion-card>
 
-    <button ion-button block (click)="editProfile()"> Submit </button>
+    </form>
+
+    <button ion-button block [disabled]="!profileEditForm.valid" (click)="editProfile()"> Submit </button>
 </ion-content>
