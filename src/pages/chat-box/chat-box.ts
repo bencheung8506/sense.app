@@ -1,4 +1,4 @@
-import { Component, ViewChild, NgModule, OnChanges } from '@angular/core';
+import { Component, ViewChild, NgModule, OnChanges, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthService } from '../../services/auth.service';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from "angularfire2/database";
@@ -6,6 +6,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Message } from '../../model/message.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import * as firebase from 'firebase';
+import { Content, List } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -19,8 +20,12 @@ export class ChatBoxPage implements OnChanges {
     chatOut = [];
     chatIn = [];
     @ViewChild('msgInput') msgInput;
+    @ViewChild(Content) content: Content; 
     chatForm: FormGroup;
     allChat = [];
+    idFirst: string;
+    idLast: string;
+    roomKey: string;
 
     constructor(public navCtrl: NavController, 
         public navParams: NavParams,  
@@ -35,84 +40,51 @@ export class ChatBoxPage implements OnChanges {
         this.chatForm = fb.group({
             message: ['', ]
         });
-        firebase.database().ref('/chat/'+this.auth.uid+'/'+this.idTo).orderByChild('timestamp').on('value', itemSnapshot => {
-            this.chatOut = [];
+        if (this.auth.uid < this.idTo){
+            this.idFirst = this.auth.uid;
+            this.idLast = this.idTo;
+        }
+        else {
+            this.idFirst = this.idTo;
+            this.idLast = this.auth.uid;    
+        }
+        this.roomKey = '/chat/'+this.idFirst+'&and&'+this.idLast;
+        firebase.database().ref(this.roomKey).orderByChild('timestamp')
+        .on('value', itemSnapshot => {
+            this.allChat = [];
             itemSnapshot.forEach( itemSnap => {
-                this.chatOut.push(itemSnap.val());
+                this.allChat.push(itemSnap.val());
                 return false;
             });
         });
-        firebase.database().ref('/chat/'+this.idTo+'/'+this.auth.uid).orderByChild('timestamp').on('value', itemSnapshot => {
-            this.chatIn = [];
-            itemSnapshot.forEach( itemSnap => {
-                this.chatOut.push(itemSnap.val());
-                return false;
-            });
-            let tempOut = this.chatOut;
-            this.allChat = tempOut.concat(this.chatIn)
-            .sort(function(o1,o2){
-                let d1 = o1['timestamp'];
-                let d2 = o2['timestamp'];
-                let t1 = new Date(d1);
-                let t2 = new Date(d2);
-                return t1 - t2;
-            });
-            console.log('out',this.chatOut,'in', this.chatIn);
-        });
+    }
+
+    ionViewDidEnter() {
+        this.content.scrollToBottom();
     }
 
     ionViewWillLoad() {
-        firebase.database().ref('/chat/'+this.auth.uid+'/'+this.idTo).orderByChild('timestamp').on('value', itemSnapshot => {
-            this.chatOut = [];
+        firebase.database().ref(this.roomKey).orderByChild('timestamp')
+        .on('value', itemSnapshot => {
+            this.allChat = [];
             itemSnapshot.forEach( itemSnap => {
-                this.chatOut.push(itemSnap.val());
+                this.allChat.push(itemSnap.val());
                 return false;
             });
         });
-        firebase.database().ref('/chat/'+this.idTo+'/'+this.auth.uid).orderByChild('timestamp').on('value', itemSnapshot => {
-            this.chatIn = [];
-            itemSnapshot.forEach( itemSnap => {
-                this.chatOut.push(itemSnap.val());
-                return false;
-            });
-            let tempOut = this.chatOut;
-            this.allChat = tempOut.concat(this.chatIn)
-            .sort(function(o1,o2){
-                let d1 = o1['timestamp'];
-                let d2 = o2['timestamp'];
-                let t1 = new Date(d1);
-                let t2 = new Date(d2);
-                return t1 - t2;
-            });
-            console.log('out',this.chatOut,'in', this.chatIn);
-        });
+        this.content.scrollToBottom();
     }
 
     ngOnChanges() {
-        firebase.database().ref('/chat/'+this.auth.uid+'/'+this.idTo).orderByChild('timestamp').on('value', itemSnapshot => {
-            this.chatOut = [];
+        firebase.database().ref(this.roomKey).orderByChild('timestamp')
+        .on('value', itemSnapshot => {
+            this.allChat = [];
             itemSnapshot.forEach( itemSnap => {
-                this.chatOut.push(itemSnap.val());
+                this.allChat.push(itemSnap.val());
                 return false;
             });
         });
-        firebase.database().ref('/chat/'+this.idTo+'/'+this.auth.uid).orderByChild('timestamp').on('value', itemSnapshot => {
-            this.chatIn = [];
-            itemSnapshot.forEach( itemSnap => {
-                this.chatOut.push(itemSnap.val());
-                return false;
-            });
-            let tempOut = this.chatOut;
-            this.allChat = tempOut.concat(this.chatIn)
-            .sort(function(o1,o2){
-                let d1 = o1['timestamp'];
-                let d2 = o2['timestamp'];
-                let t1 = new Date(d1);
-                let t2 = new Date(d2);
-                return t1 - t2;
-            });
-            console.log('out',this.chatOut,'in', this.chatIn);
-        });
+        this.content.scrollToBottom();
     }
 
     sendMessage() {
@@ -120,8 +92,11 @@ export class ChatBoxPage implements OnChanges {
         data.timestamp = new Date().toISOString();
         data.sender = this.auth.name;
         this.afAuth.authState.take(1).subscribe(auth => {
-            this.afDatabase.list(`chat/${auth.uid}/${this.idTo}`).push(data)
+            this.afDatabase.list(this.roomKey).push(data);
         });
         this.msgInput.value = '';
+        setTimeout(() => {
+            this.content.scrollToBottom(100);
+        }, 200);
     }
 }

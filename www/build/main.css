@@ -33369,6 +33369,22 @@ page-chat-box ion-content > .scroll-content {
   margin-bottom: 80px;
 }
 
+page-chat-box .message {
+  padding: 10px !important;
+  -webkit-transition: all 250ms ease-in-out !important;
+  transition: all 250ms ease-in-out !important;
+  border-radius: 10px !important;
+  margin-bottom: 4px !important;
+}
+
+page-chat-box .left {
+  background-color: #e2f0fa;
+}
+
+page-chat-box .right {
+  background-color: #a8d2f0;
+}
+
 page-home .scroll-content {
   overflow: hidden;
 }

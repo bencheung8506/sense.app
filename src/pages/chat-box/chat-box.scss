@@ -2,4 +2,19 @@ page-chat-box {
     ion-content > .scroll-content{
       margin-bottom: 80px;
     }
+
+    .message {
+        padding: 10px !important;
+        transition: all 250ms ease-in-out !important;
+        border-radius: 10px !important;
+        margin-bottom: 4px !important;
+    }
+
+    .left {
+        background-color: #e2f0fa;
+    }
+
+    .right {
+        background-color: #a8d2f0;
+    }
 }
