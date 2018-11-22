@@ -19,9 +19,11 @@ import { LoginPage } from '../pages/login/login';
 import { AuthService } from '../services/auth.service';
 import { SignupPage } from '../pages/signup/signup';
 import { ProfilePageModule } from '../pages/profile/profile.module';
+import { GoalEditPage } from '../pages/goal-edit/goal-edit';
+import { GoalEditPageModule } from '../pages/goal-edit/goal-edit.module';
+import { GoalPageModule } from '../pages/goal/goal.module';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { ToastController } from 'ionic-angular';
-import { ProfileEditPageModule } from '../pages/profile-edit/profile-edit.module';
 import { Component, enableProdMode } from "@angular/core";
 import { ProfileEditPage } from '../pages/profile-edit/profile-edit';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -32,8 +34,11 @@ import { CalendarPage } from '../pages/calendar/calendar';
 import { ToDoListPage } from '../pages/to-do-list/to-do-list';
 import { PipesModule } from '../pipes/pipes.module';
 import { PairUpNoLoginPage } from '../pages/pair-up-no-login/pair-up-no-login'
-import { ChatBoxPage } from '../pages/chat-box/chat-box'
-
+import { ChatBoxPage } from '../pages/chat-box/chat-box';
+import { SettingTabPage } from '../pages/setting-tab/setting-tab';
+import { SettingTabPageModule } from '../pages/setting-tab/setting-tab.module';
+import { PopoverProfilePage } from '../pages/popover-profile/popover-profile';
+import { PopoverProfilePageModule } from '../pages/popover-profile/popover-profile.module';
 
 @NgModule({
 	declarations: [
@@ -46,7 +51,8 @@ import { ChatBoxPage } from '../pages/chat-box/chat-box'
 		CalendarPage,
 		ToDoListPage,
 		PairUpNoLoginPage,
-		ChatBoxPage 
+		ChatBoxPage,
+		// PopoverProfilePage
 	],
 	imports: [
 		BrowserModule,
@@ -67,7 +73,11 @@ import { ChatBoxPage } from '../pages/chat-box/chat-box'
     	ProfilePageModule, 
     	CustomFormsModule, 
     	ReactiveFormsModule,
-		PipesModule
+		PipesModule,
+		GoalPageModule,
+		SettingTabPageModule,
+		GoalEditPageModule,
+		PopoverProfilePageModule
 	],
 	bootstrap: [IonicApp],
 	entryComponents: [
@@ -80,7 +90,8 @@ import { ChatBoxPage } from '../pages/chat-box/chat-box'
 		CalendarPage,
 		ToDoListPage,
 		PairUpNoLoginPage,
-		ChatBoxPage 
+		ChatBoxPage,
+		// PopoverProfilePage
 	],
 	providers: [
 		Config,

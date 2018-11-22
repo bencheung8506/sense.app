@@ -33367,6 +33367,7 @@ page-chat .btn-align .button-inner {
 
 page-chat-box ion-content > .scroll-content {
   margin-bottom: 80px;
+  margin-top: 110px !important;
 }
 
 page-chat-box .message {
@@ -33383,6 +33384,49 @@ page-chat-box .left {
 
 page-chat-box .right {
   background-color: #a8d2f0;
+}
+
+page-chat-box [ion-fixed] {
+  width: 100%;
+  height: 20%;
+}
+
+page-chat-box .chat-name {
+  padding-left: 15px;
+  font-size: 18px;
+  color: #3D9BDD;
+}
+
+page-chat-box .chatter {
+  background-color: #fbfbfb;
+  height: 46px;
+  -webkit-box-shadow: 0 2px 4px 0 #cccccc;
+  box-shadow: 0 2px 4px 0 #cccccc;
+}
+
+page-chat-box .custom-popover .popover-content {
+  width: 80%;
+  top: 70px;
+  left: 30px;
+  bottom: 70px;
+}
+
+page-goal .label-pad {
+  padding-left: 10px;
+}
+
+page-goal ion-card {
+  border-top: 5px solid lightblue;
+}
+
+page-goal .row[no-lines].bottom-border {
+  border-bottom: 1.5px solid;
+  border-bottom-color: #cccccc;
+}
+
+page-goal-edit .row[no-lines].bottom-border {
+  border-bottom: 1.5px solid;
+  border-bottom-color: #cccccc;
 }
 
 page-home .scroll-content {
@@ -33436,6 +33480,10 @@ page-home .title.title-md {
 
 .page-login ion-content {
   margin-top: 10px;
+}
+
+page-popover-profile .label-pad {
+  padding-left: 10px;
 }
 
 page-profile .label-pad {

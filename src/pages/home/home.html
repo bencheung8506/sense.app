@@ -1,6 +1,6 @@
 <ion-header>
 	<ion-navbar>
-        <ion-buttons left> <button (click)="toProfilePage()" class="navbutton" *ngIf="auth.authenticated" float-right> <ion-icon name="ios-construct"></ion-icon> </button> 
+        <ion-buttons left> <button (click)="toSettingTabPage()" class="navbutton" *ngIf="auth.authenticated" float-right> <ion-icon name="ios-construct"></ion-icon> </button> 
         </ion-buttons>
 		<ion-title class="navtitle">
 			SENSE
@@ -19,7 +19,7 @@
 	<ion-grid class="home-grid">
 	<ion-row class="home-row1">
 		<ion-col col-6>
-			<button ion-button full name="forum" style="height: 100%;">
+			<button ion-button full name="forum" style="height: 100%;" >
 				Forum
 			</button>
 		</ion-col>

@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Profile } from "../../model/profile.model";
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from "angularfire2/database";
@@ -37,6 +37,7 @@ export class ProfileEditPage implements OnInit{
         fb: FormBuilder,
         private cd: ChangeDetectorRef,
         private toast: ToastController,
+        private app: App,
         private afDatabase: AngularFireDatabase) {
         this.profileEditForm = fb.group({
             age: ['', Validators.compose([Validators.required])],
@@ -49,10 +50,7 @@ export class ProfileEditPage implements OnInit{
             SI: [ , ],
             HI: [ , ],
             MI: [ , ],
-            academicGoal: ['' , ],
-            workGoal: ['' , ],
-            socialGoal: ['' , ],
-            lifestyleGoal: ['' , ],
+            publicProfile: [ , ],
         });
     }
 
@@ -64,6 +62,8 @@ export class ProfileEditPage implements OnInit{
             this.profileDataNg.snapshotChanges().subscribe(action => {
                 this.currentUser = action.payload.val();
                 this.profileEditForm.controls['isSEN'].setValue(this.currentUser.isSEN);
+                let isPublic = (this.currentUser.publicProfile == true);
+                this.profileEditForm.controls['publicProfile'].setValue(isPublic);
             });
         });
     }
@@ -88,26 +88,13 @@ export class ProfileEditPage implements OnInit{
             return;
         }
 
-        if (data.academicGoal == null)
-            data.academicGoal = '';
-        if (data.workGoal == null)
-            data.workGoal = '';
-        if (data.socialGoal == null)
-            data.socialGoal = '';
-        if (data.lifeStlyeGoal == null)
-            data.lifeStlyeGoal = '';
-        
-        data.academicGoal = data.academicGoal.trimEnd();
-        data.workGoal = data.workGoal.trimEnd();
-        data.socialGoal = data.socialGoal.trimEnd();
-        data.lifeStlyeGoal = data.lifeStlyeGoal.trimEnd();
         data.valid = true;
 
         this.afAuth.authState.take(1).subscribe(auth => {
             this.afDatabase.object(`profile/${auth.uid}`).update(data)
                 .then(() => {
                     this.profileEditError = '';
-                    this.navCtrl.setRoot(HomePage);
+                    this.app.getRootNav().setRoot(HomePage);
                     this.toast.create({
                         message: `Profile edit is successful.`,
                         duration: 2000

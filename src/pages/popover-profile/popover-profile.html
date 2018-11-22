@@ -1,0 +1,37 @@
+<ion-grid style='padding-left: 20px'>
+    <h5 class="label-pad"> Profile of {{ name }} </h5>
+
+    <ion-row align-items-center>
+        <ion-col col-5>
+            <ion-label class="label-pad"> Age </ion-label>
+        </ion-col>
+        <ion-col col-7>
+            <p *ngIf = "age"> {{ age }} </p>
+            <p *ngIf = "!age">  Not stated  </p>
+        </ion-col>
+    </ion-row> 
+
+    <ion-row align-items-center>
+        <ion-col col-5>
+            <ion-label class="label-pad"> Is SEN </ion-label>
+        </ion-col>
+        <ion-col col-7>
+            <p *ngIf = "isSEN == true"> Yes </p>
+            <p *ngIf = "isSEN == false">  No  </p>
+            <p *ngIf = "isSEN == null">  Not stated  </p>
+        </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+        <ion-col col-5>
+            <ion-label class="label-pad"> SEN type </ion-label>
+        </ion-col>
+        <ion-col col-7>
+            <p> {{ SENlist }} </p>
+        </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+        <button ion-button clear (click)='close()'> Dismiss </button>
+    </ion-row>
+</ion-grid>

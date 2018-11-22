@@ -1,0 +1,59 @@
+<ion-content padding>
+    <ion-card>
+    <ion-card-header> Short term goals </ion-card-header>
+    <ion-card-content>
+        <ion-row align-items-center no-lines class="bottom-border">
+            <ion-col col-5>
+                <ion-label class="label-pad"> Goal Visibility </ion-label>
+            </ion-col>
+            <ion-col col-7>
+                <p *ngIf = "currentUser.publicGoal == true"> Public </p>
+                <p *ngIf = "currentUser.publicGoal != true">  Private  </p>
+            </ion-col>
+        </ion-row> 
+
+        <ion-row align-items-center>
+            <ion-col col-5>
+                <ion-label class="label-pad"> Academic </ion-label>
+            </ion-col>
+            <ion-col col-7>
+                <p *ngIf = "!currentUser.academicGoal" style="color:#bbbbbb;"> Not stated </p>
+                <p *ngIf = "currentUser.academicGoal">  {{ currentUser.academicGoal }}  </p>
+            </ion-col>
+        </ion-row>
+
+        <ion-row align-items-center>
+            <ion-col col-5>
+                <ion-label class="label-pad"> Work </ion-label>
+            </ion-col>
+            <ion-col col-7>
+                <p *ngIf = "!currentUser.workGoal" style="color:#bbbbbb;"> Not stated </p>
+                <p *ngIf = "currentUser.workGoal">  {{ currentUser.workGoal }}  </p>
+            </ion-col>
+        </ion-row>
+
+        <ion-row align-items-center>
+            <ion-col col-5>
+                <ion-label class="label-pad"> Social </ion-label>
+            </ion-col>
+            <ion-col col-7>
+                <p *ngIf = "!currentUser.socialGoal" style="color:#bbbbbb;"> Not stated </p>
+                <p *ngIf = "currentUser.socialGoal">  {{ currentUser.socialGoal }}  </p>
+            </ion-col>
+        </ion-row>
+
+        <ion-row align-items-center>
+            <ion-col col-5>
+                <ion-label class="label-pad"> Lifestyle </ion-label>
+            </ion-col>
+            <ion-col col-7>
+                <p *ngIf = "!currentUser.lifestyleGoal" style="color:#bbbbbb;"> Not stated </p>
+                <p *ngIf = "currentUser.lifestyleGoal">  {{ currentUser.lifestyleGoal }}  </p>
+            </ion-col>
+        </ion-row>
+    </ion-card-content>
+    </ion-card>
+
+    <button ion-button block (click)="toGoalEditPage()"> Edit Goal </button>
+ 
+</ion-content>

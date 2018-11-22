@@ -16,4 +16,7 @@ export interface Profile {
     workGoal: string;
     socialGoal: string;
     lifestyleGoal: string;
+
+    publicProfile: boolean;
+    publicGoal: boolean;
 }

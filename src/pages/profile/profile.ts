@@ -35,7 +35,6 @@ export class ProfilePage {
     ionViewWillLoad() {
         this.afAuth.authState.take(1).subscribe(data => {
             this.profileDataNg = this.afDatabase.object(`profile/${data.uid}`);
-            this.profileData = this.profileDataNg.valueChanges();
             this.profileDataNg.snapshotChanges().subscribe(action => {
                 this.currentUser = action.payload.val();
 

@@ -12,6 +12,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import 'rxjs/add/operator/take';
 import { PairUpPage } from '../pair-up/pair-up';
 import { PairUpNoLoginPage } from '../pair-up-no-login/pair-up-no-login';
+import { SettingTabPage } from '../setting-tab/setting-tab';
 
 @Component({
     selector: 'page-home',
@@ -62,5 +63,9 @@ export class HomePage {
 
 	toPairUpNoLoginPage() {
 		this.navCtrl.push(PairUpNoLoginPage);
+	}
+
+	toSettingTabPage(){
+		this.navCtrl.push(SettingTabPage);
 	}
 }

@@ -1,4 +1,18 @@
 <ion-content padding (change)="content.scrollToBottom()">
+    <div ion-fixed>
+        <ion-row class='chatter' align-items-center>
+            <ion-col col-8 class='chat-name'> {{nameTo}} </ion-col>
+            <ion-col col-4 style='text-align: right;'> 
+                <button ion-button icon-only clear (click)='showProfile($event)' [disabled] = 'chatter.publicProfile != true'>
+                    <ion-icon name="contact" style='font-size: 16px;'></ion-icon>
+                </button>
+                <button ion-button icon-only clear (click)='showGoal()'[disabled] = 'chatter.publicGoal != true'>
+                    <ion-icon name="checkmark-circle-outline" style='font-size: 16px;'></ion-icon>
+                </button>
+            </ion-col>
+        </ion-row>
+    </div>
+
     <ion-grid>
         <ion-row *ngFor="let msg of allChat" align-items-center> 
             <ion-col offset-4 col-8 *ngIf='msg.sender==auth.name' class='message right'>

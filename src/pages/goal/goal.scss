@@ -1,0 +1,14 @@
+page-goal {
+    .label-pad{
+        padding-left: 10px;
+    }
+
+    ion-card {
+        border-top: 5px solid lightblue;
+    }
+
+    .row[no-lines].bottom-border { 
+        border-bottom: 1.5px solid; 
+        border-bottom-color: #cccccc;
+    }
+}
