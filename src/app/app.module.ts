@@ -37,8 +37,8 @@ import { PairUpNoLoginPage } from '../pages/pair-up-no-login/pair-up-no-login'
 import { ChatBoxPage } from '../pages/chat-box/chat-box';
 import { SettingTabPage } from '../pages/setting-tab/setting-tab';
 import { SettingTabPageModule } from '../pages/setting-tab/setting-tab.module';
-import { PopoverProfilePage } from '../pages/popover-profile/popover-profile';
 import { PopoverProfilePageModule } from '../pages/popover-profile/popover-profile.module';
+import { PopoverGoalPageModule } from '../pages/popover-goal/popover-goal.module'
 
 @NgModule({
 	declarations: [
@@ -52,7 +52,6 @@ import { PopoverProfilePageModule } from '../pages/popover-profile/popover-profi
 		ToDoListPage,
 		PairUpNoLoginPage,
 		ChatBoxPage,
-		// PopoverProfilePage
 	],
 	imports: [
 		BrowserModule,
@@ -77,7 +76,8 @@ import { PopoverProfilePageModule } from '../pages/popover-profile/popover-profi
 		GoalPageModule,
 		SettingTabPageModule,
 		GoalEditPageModule,
-		PopoverProfilePageModule
+		PopoverProfilePageModule,
+		PopoverGoalPageModule
 	],
 	bootstrap: [IonicApp],
 	entryComponents: [
@@ -91,7 +91,6 @@ import { PopoverProfilePageModule } from '../pages/popover-profile/popover-profi
 		ToDoListPage,
 		PairUpNoLoginPage,
 		ChatBoxPage,
-		// PopoverProfilePage
 	],
 	providers: [
 		Config,

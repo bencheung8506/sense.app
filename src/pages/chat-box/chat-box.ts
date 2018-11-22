@@ -9,7 +9,8 @@ import * as firebase from 'firebase';
 import { Content, List } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { Profile } from "../../model/profile.model";
-import { PopoverProfilePage } from '../popover-profile/popover-profile'
+import { PopoverProfilePage } from '../popover-profile/popover-profile';
+import { PopoverGoalPage } from '../popover-goal/popover-goal';
 
 @IonicPage()
 @Component({
@@ -32,6 +33,8 @@ export class ChatBoxPage implements OnChanges {
 
     chatterNg: any;
     chatter = {} as Profile;
+
+    toBlur = false;
 
     constructor(public navCtrl: NavController, 
         public navParams: NavParams,  
@@ -116,12 +119,21 @@ export class ChatBoxPage implements OnChanges {
     }
 
     showGoal() {
-        let alert = this.alertCtrl.create({
-            title: 'Goal',
-            subTitle: this.chatter.publicGoal ? 'Public' : 'Private',
-            buttons: ['Dismiss']
-            });
-        alert.present();
+        // let alert = this.alertCtrl.create({
+        //     title: 'Goal',
+        //     subTitle: this.chatter.publicGoal ? 'Public' : 'Private',
+        //     buttons: ['Dismiss']
+        //     });
+        // alert.present();
+        const popover = this.popoverController.create(
+            PopoverGoalPage, {
+                name: this.nameTo,
+                academicGoal: this.chatter.academicGoal,
+                workGoal: this.chatter.workGoal,
+                socialGoal: this.chatter.socialGoal,
+                lifestyleGoal: this.chatter.lifestyleGoal,
+            }, {showBackdrop: true, cssClass:"custom-popover"});
+        popover.present();
     }
 
     async showProfile(ev: Event) {
@@ -156,13 +168,16 @@ export class ChatBoxPage implements OnChanges {
             }
         }
 
+        // this.toBlur = true;
+
         const popover = await this.popoverController.create(
             PopoverProfilePage, {
                 name: this.nameTo,
                 age: this.chatter.age,
                 isSEN: this.chatter.isSEN,
                 SENlist: SENlist,
-            });
+            }, {showBackdrop: true, cssClass:"custom-popover"});
         await popover.present();
+        // popover.onWillDismiss(()=>{this.toBlur=false});
     }
 }

@@ -1,45 +1,51 @@
 page-chat-box {
-		ion-content > .scroll-content{
-				margin-bottom: 80px;
-				margin-top: 110px !important;
-		}
+	ion-content > .scroll-content{
+		margin-bottom: 80px;
+		margin-top: 110px !important;
+	}
 
-		.message {
-				padding: 10px !important;
-				transition: all 250ms ease-in-out !important;
-				border-radius: 10px !important;
-				margin-bottom: 4px !important;
-		}
+	.message {
+		padding: 10px !important;
+		transition: all 250ms ease-in-out !important;
+		border-radius: 10px !important;
+		margin-bottom: 4px !important;
+	}
 
-		.left {
-				background-color: #e2f0fa;
-		}
+	.left {
+		background-color: #e2f0fa;
+	}
 
-		.right {
-				background-color: #a8d2f0;
-		}
+	.right {
+		background-color: #a8d2f0;
+	}
 
-		[ion-fixed] {
-				width: 100%;
-				height: 20%;
-		}
+	[ion-fixed] {
+		width: 100%;
+		height: 20%;
+	}
 
-		.chat-name{
-				padding-left: 15px;
-				font-size: 18px;
-				color: #3D9BDD;
-		}
+	.chat-name{
+		padding-left: 15px;
+		font-size: 18px;
+		color: #3D9BDD;
+	}
 
-		.chatter {
-				background-color: #fbfbfb; 
-				height: 46px; 
-				box-shadow: 0 2px 4px 0 #cccccc;
-		}
-		
-		.custom-popover .popover-content {
-				width: 80%;
-				top: 70px;
-				left: 30px;
-				bottom: 70px
-		}
+	.chatter {
+		background-color: #fbfbfb; 
+		height: 46px; 
+		box-shadow: 0 2px 4px 0 #cccccc;
+	}
+
+	.custom-popover .popover-content {
+		width: 80%;
+		top: 70px;
+		left: 30px;
+		bottom: 70px
+	}
+
+  .blur {
+    filter: blur(5px) grayscale(30%);
+    -webkit-filter: blur(5px) grayscale(30%);
+    transition: -webkit-filter 100ms linear;
+  }
 }

@@ -33358,6 +33358,11 @@ ion-navbar.toolbar {
   text-align: center;
 }
 
+.custom-popover ion-backdrop {
+  opacity: 0.45;
+  background-color: black;
+}
+
 page-chat .btn-align .button-inner {
   -webkit-box-pack: start;
   -webkit-justify-content: flex-start;
@@ -33409,6 +33414,12 @@ page-chat-box .custom-popover .popover-content {
   top: 70px;
   left: 30px;
   bottom: 70px;
+}
+
+page-chat-box .blur {
+  filter: blur(5px) grayscale(30%);
+  -webkit-filter: blur(5px) grayscale(30%);
+  transition: -webkit-filter 100ms linear;
 }
 
 page-goal .label-pad {
@@ -33480,6 +33491,10 @@ page-home .title.title-md {
 
 .page-login ion-content {
   margin-top: 10px;
+}
+
+page-popover-goal .label-pad {
+  padding-left: 10px;
 }
 
 page-popover-profile .label-pad {

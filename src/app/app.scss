@@ -7,3 +7,10 @@
 .center{
     text-align: center;
 }
+
+.custom-popover {
+    ion-backdrop{
+        opacity: 0.45;
+        background-color: black;
+    }
+}

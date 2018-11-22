@@ -1,0 +1,49 @@
+<ion-grid style='padding-left: 20px'>
+    <h5 class="label-pad"> Goals of {{ name }} </h5>
+
+    <ion-row align-items-center>
+        <ion-col col-5>
+            <ion-label class="label-pad"> Academic </ion-label>
+        </ion-col>
+        <ion-col col-7>
+            <p *ngIf = "!academicGoal"> Not stated </p>
+            <p *ngIf = "academicGoal">  {{ academicGoal }}  </p>
+        </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+        <ion-col col-5>
+            <ion-label class="label-pad"> Work </ion-label>
+        </ion-col>
+        <ion-col col-7>
+            <p *ngIf = "!workGoal"> Not stated </p>
+            <p *ngIf = "workGoal">  {{ workGoal }}  </p>
+        </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+        <ion-col col-5>
+            <ion-label class="label-pad"> Social </ion-label>
+        </ion-col>
+        <ion-col col-7>
+            <p *ngIf = "!socialGoal"> Not stated </p>
+            <p *ngIf = "socialGoal">  {{ socialGoal }}  </p>
+        </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+        <ion-col col-5>
+            <ion-label class="label-pad"> Lifestyle </ion-label>
+        </ion-col>
+        <ion-col col-7>
+            <p *ngIf = "!lifestyleGoal"> Not stated </p>
+            <p *ngIf = "lifestyleGoal">  {{ lifestyleGoal }}  </p>
+        </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+        <ion-col offset-6 col-2>
+            <button ion-button clear (click)='close()'> Dismiss </button>
+        </ion-col>
+    </ion-row>
+</ion-grid>

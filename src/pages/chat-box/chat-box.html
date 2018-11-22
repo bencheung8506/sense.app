@@ -1,4 +1,4 @@
-<ion-content padding (change)="content.scrollToBottom()">
+<ion-content padding (change)="content.scrollToBottom()" [ngClass]='{"blur": toBlur}'>
     <div ion-fixed>
         <ion-row class='chatter' align-items-center>
             <ion-col col-8 class='chat-name'> {{nameTo}} </ion-col>
@@ -28,20 +28,18 @@
 </ion-content>
 
 <form [formGroup]="chatForm">
-
-<ion-footer>
-	<ion-grid>
-		<ion-row align-items-center>
-			<ion-col col-10>
-				<ion-input type="text" placeholder="Type a message" name="message" formControlName='message' #msgInput></ion-input>
-			</ion-col>
-			<ion-col col-2>
-                <button ion-button icon-only clear (click)="sendMessage()" [disabled]='!msgInput.value'>
-    				<ion-icon name="paper-plane" style='font-size: 24px;'></ion-icon>
-                </button>
-			</ion-col>
-		</ion-row>
-	</ion-grid>
-</ion-footer>
-
+    <ion-footer [ngClass]='{"blur": toBlur}'>
+    	<ion-grid>
+    		<ion-row align-items-center>
+    			<ion-col col-10>
+    				<ion-input type="text" placeholder="Type a message" name="message" formControlName='message' #msgInput></ion-input>
+    			</ion-col>
+    			<ion-col col-2>
+                    <button ion-button icon-only clear (click)="sendMessage()" [disabled]='!msgInput.value'>
+        				<ion-icon name="paper-plane" style='font-size: 24px;'></ion-icon>
+                    </button>
+    			</ion-col>
+    		</ion-row>
+    	</ion-grid>
+    </ion-footer>
 </form>
