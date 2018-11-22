@@ -39,6 +39,7 @@ import { SettingTabPage } from '../pages/setting-tab/setting-tab';
 import { SettingTabPageModule } from '../pages/setting-tab/setting-tab.module';
 import { PopoverProfilePageModule } from '../pages/popover-profile/popover-profile.module';
 import { PopoverGoalPageModule } from '../pages/popover-goal/popover-goal.module'
+import { NgCalendarModule } from 'ionic2-calendar';
 
 @NgModule({
 	declarations: [
@@ -77,7 +78,8 @@ import { PopoverGoalPageModule } from '../pages/popover-goal/popover-goal.module
 		SettingTabPageModule,
 		GoalEditPageModule,
 		PopoverProfilePageModule,
-		PopoverGoalPageModule
+		PopoverGoalPageModule,
+		NgCalendarModule,
 	],
 	bootstrap: [IonicApp],
 	entryComponents: [

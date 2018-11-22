@@ -1,0 +1,39 @@
+<ion-header>
+	<ion-navbar>
+		<ion-buttons start>
+			<button ion-button icon-only (click)="cancel()">
+				<ion-icon name="close"></ion-icon>
+			</button>
+		</ion-buttons>
+		<ion-title>Event Details</ion-title>
+	</ion-navbar>
+</ion-header>
+ 
+<ion-content>
+	<ion-list>
+		<ion-item>
+			<ion-input type="text" placeholder="Event Name" [(ngModel)]="event.title"></ion-input>
+		</ion-item>
+ 
+		<ion-item>
+			<ion-label style='padding-left: 7.5px'>Start</ion-label>
+			<ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="YY MMM D:HH:mm" [(ngModel)]="event.startTime" [min]="minDate" [max]="maxDate" *ngIf='!event.allDay'></ion-datetime>
+            <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="YY MMM D" [(ngModel)]="event.startTime" [min]="minDate" [max]="maxDate" *ngIf='event.allDay'></ion-datetime>
+		</ion-item>
+ 
+		<ion-item>
+			<ion-label style='padding-left: 7.5px'>End</ion-label>
+			<ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="YY MMM D:HH:mm" [(ngModel)]="event.endTime" [min]="minDate" [max]="maxDate" *ngIf='!event.allDay'></ion-datetime>
+            <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="YY MMM D" [(ngModel)]="event.endTime" [min]="minDate" [max]="maxDate" *ngIf='event.allDay'></ion-datetime>
+		</ion-item>
+ 
+		<ion-item>
+			<ion-label>All Day?</ion-label>
+			<ion-checkbox [(ngModel)]="event.allDay"></ion-checkbox>
+		</ion-item>
+	</ion-list>
+ 
+	<button ion-button full icon-left (click)="save()">
+		<ion-icon name="checkmark"></ion-icon> Add Event
+	</button>
+</ion-content>

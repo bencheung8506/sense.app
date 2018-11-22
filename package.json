@@ -41,6 +41,7 @@
     "cordova-universal-links-plugin": "^1.2.1",
     "firebase": "^4.13.1",
     "firebase-admin": "^6.1.0",
+    "intl": "^1.2.5",
     "ionic-angular": "3.9.2",
     "ionic-plugin-keyboard": "^2.2.1",
     "ionic2-calendar": "^0.4.6",

@@ -80,7 +80,7 @@ var NotePage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'page-note',template:/*ion-inline-start:"D:\Ionic App\ionic3-firebase-auth\src\pages\note\note.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      NOTE\n    </ion-title>\n\n    <ion-buttons end>\n      <button navPush="AddNotePage" ion-button>\n        <ion-icon name="add"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-list>\n    <ion-list-header>\n      Notes\n    </ion-list-header>\n\n    <ion-item *ngFor="let note of noteList | async" \n    detail-push navPush="EditNotePage" [navParams]="{note:note}">\n      {{note.title}}\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"D:\Ionic App\ionic3-firebase-auth\src\pages\note\note.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__services_note_list_service__["a" /* NoteListService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__services_note_list_service__["a" /* NoteListService */]])
     ], NotePage);
     return NotePage;
 }());

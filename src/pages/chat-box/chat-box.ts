@@ -118,13 +118,7 @@ export class ChatBoxPage implements OnChanges {
         }, 150);
     }
 
-    showGoal() {
-        // let alert = this.alertCtrl.create({
-        //     title: 'Goal',
-        //     subTitle: this.chatter.publicGoal ? 'Public' : 'Private',
-        //     buttons: ['Dismiss']
-        //     });
-        // alert.present();
+    showGoal(ev: Event) {
         const popover = this.popoverController.create(
             PopoverGoalPage, {
                 name: this.nameTo,

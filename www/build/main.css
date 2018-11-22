@@ -33363,6 +33363,16 @@ ion-navbar.toolbar {
   background-color: black;
 }
 
+page-calendar .calendar-day {
+  border-radius: 6px;
+  padding: 3px 5px;
+}
+
+page-calendar .monthview-selected {
+  background-color: #67b0e5 !important;
+  color: white !important;
+}
+
 page-chat .btn-align .button-inner {
   -webkit-box-pack: start;
   -webkit-justify-content: flex-start;

@@ -82,11 +82,11 @@ var SignupPage = (function () {
             selector: 'as-page-signup',template:/*ion-inline-start:"D:\Ionic App\ionic3-firebase-auth\src\pages\signup\signup.html"*/'<ion-header>\n\n	<ion-navbar>\n\n		<ion-title>Sign up</ion-title>\n\n	</ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n\n\n	<form (ngSubmit)="signup()" [formGroup]="form">\n\n		<ion-list inset>\n\n\n\n			<ion-item [ngClass]="{ invalid: usernameErrors.hasError(\'*\', [\'touched\']) }">\n\n				<ion-input type="text" placeholder="User Name" formControlName="username" required></ion-input>\n\n			</ion-item>\n\n\n\n			<div ngxErrors="username" #usernameErrors="ngxErrors">\n\n				<div [ngxError]="[\'minlength\', \'required\']" [when]="[\'touched\']">It should be at least 6 characters.</div>\n\n				<div [ngxError]="[\'pattern\']" [when]="[\'touched\']">Please use only alphabets and numbers.</div>\n\n			</div>\n\n\n\n			<ion-item [ngClass]="{ invalid: passwordErrors.hasError(\'*\', [\'touched\']) }">\n\n				<ion-input type="password" placeholder="Password" formControlName="password"></ion-input>\n\n			</ion-item>\n\n\n\n			<div ngxErrors="password" #passwordErrors="ngxErrors">\n\n				<div [ngxError]="[\'minlength\', \'required\']" [when]="[\'touched\']">It should be at least 6 characters.</div>\n\n			</div>\n\n		</ion-list>\n\n\n\n		<div padding-horizontal>\n\n			<div class="form-error">{{signupError}}</div>\n\n\n\n			<button ion-button full type="submit" [disabled]="!form.valid">Sign up</button>\n\n		</div>\n\n	</form>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Ionic App\ionic3-firebase-auth\src\pages\signup\signup.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormBuilder"],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_4__services_auth_service__["a" /* AuthService */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */],
             __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__["a" /* AngularFireAuth */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* ToastController */],
             __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__["a" /* AngularFireDatabase */]])
     ], SignupPage);
     return SignupPage;
@@ -194,8 +194,8 @@ var ProfilePage = (function () {
             selector: 'page-profile',template:/*ion-inline-start:"D:\Ionic App\ionic3-firebase-auth\src\pages\profile\profile.html"*/'<ion-content padding>\n    <ion-card>\n    <ion-card-header> Basic information </ion-card-header>\n    <ion-card-content> \n        <ion-row align-items-center>\n            <ion-col col-5>\n                <ion-label class="label-pad"> User name </ion-label>\n            </ion-col>\n            <ion-col col-7>\n                <p> {{ auth.email.split(\'@sense.com\')[0] }} </p>\n            </ion-col>\n        </ion-row>\n\n        <ion-row align-items-center>\n            <ion-col col-5>\n                <ion-label class="label-pad"> Age </ion-label>\n            </ion-col>\n            <ion-col col-7>\n                <p *ngIf = "currentUser.age"> {{ currentUser.age }} </p>\n                <p *ngIf = "!currentUser.age">  Not stated  </p>\n            </ion-col>\n        </ion-row> \n\n        <ion-row align-items-center>\n            <ion-col col-5>\n                <ion-label class="label-pad"> Profile Visibility </ion-label>\n            </ion-col>\n            <ion-col col-7>\n                <p *ngIf = "currentUser.publicProfile == true"> Public </p>\n                <p *ngIf = "currentUser.publicProfile != true">  Private  </p>\n            </ion-col>\n        </ion-row> \n    </ion-card-content>\n    </ion-card>\n    \n    <ion-card>\n    <ion-card-header> SEN information </ion-card-header>\n    <ion-card-content>\n        <ion-row align-items-center>\n            <ion-col col-5>\n                <ion-label class="label-pad"> Is SEN </ion-label>\n            </ion-col>\n            <ion-col col-7>\n                <p *ngIf = "currentUser.isSEN == true"> Yes </p>\n                <p *ngIf = "currentUser.isSEN == false">  No  </p>\n                <p *ngIf = "currentUser.isSEN == null">  Not stated  </p>\n            </ion-col>\n        </ion-row>\n\n        <ion-row align-items-center>\n            <ion-col col-5>\n                <ion-label class="label-pad"> SEN type </ion-label>\n            </ion-col>\n            <ion-col col-7>\n                <p> {{ SENlist }} </p>\n            </ion-col>\n        </ion-row>\n    </ion-card-content>\n    </ion-card>\n\n    <button ion-button block (click)="toProfileEditPage()"> Edit Profile </button>\n \n</ion-content>\n'/*ion-inline-end:"D:\Ionic App\ionic3-firebase-auth\src\pages\profile\profile.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_4__services_auth_service__["a" /* AuthService */],
             __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */]])
     ], ProfilePage);
@@ -251,6 +251,13 @@ var firebaseConfig = {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CalendarPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment__ = __webpack_require__(627);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase__ = __webpack_require__(254);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_firebase__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_auth_service__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_database__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2_auth__ = __webpack_require__(20);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -262,18 +269,144 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+
+
+
+
 var CalendarPage = (function () {
-    function CalendarPage(navCtrl, navParams) {
+    function CalendarPage(navCtrl, modalCtrl, alertCtrl, auth, afDatabase, afAuth) {
+        var _this = this;
         this.navCtrl = navCtrl;
-        this.navParams = navParams;
+        this.modalCtrl = modalCtrl;
+        this.alertCtrl = alertCtrl;
+        this.afDatabase = afDatabase;
+        this.afAuth = afAuth;
+        this.eventSource = [];
+        this.selectedDay = new Date();
+        this.calendar = {
+            mode: 'month',
+            currentDate: new Date()
+        };
+        this.auth = auth;
+        this.calendarKey = '/calendar/' + this.auth.uid;
+        __WEBPACK_IMPORTED_MODULE_3_firebase__["database"]().ref(this.calendarKey)
+            .on('value', function (itemSnapshot) {
+            _this.eventSource = [];
+            itemSnapshot.forEach(function (itemSnap) {
+                var raw = itemSnap.val();
+                var data = {
+                    title: raw.title,
+                    startTime: new Date(raw.startTime),
+                    endTime: new Date(raw.endTime),
+                    allDay: raw.allDay,
+                    id: itemSnap.key
+                };
+                _this.eventSource.push(data);
+                return false;
+            });
+        });
     }
+    CalendarPage.prototype.ionViewWillLoad = function () {
+        var _this = this;
+        __WEBPACK_IMPORTED_MODULE_3_firebase__["database"]().ref(this.calendarKey)
+            .on('value', function (itemSnapshot) {
+            _this.eventSource = [];
+            itemSnapshot.forEach(function (itemSnap) {
+                var raw = itemSnap.val();
+                var data = {
+                    title: raw.title,
+                    startTime: new Date(raw.startTime),
+                    endTime: new Date(raw.endTime),
+                    allDay: raw.allDay,
+                    id: itemSnap.key
+                };
+                _this.eventSource.push(data);
+                return false;
+            });
+        });
+    };
+    CalendarPage.prototype.ngOnChanges = function () {
+        var _this = this;
+        __WEBPACK_IMPORTED_MODULE_3_firebase__["database"]().ref(this.calendarKey)
+            .on('value', function (itemSnapshot) {
+            _this.eventSource = [];
+            itemSnapshot.forEach(function (itemSnap) {
+                var raw = itemSnap.val();
+                var data = {
+                    title: raw.title,
+                    startTime: new Date(raw.startTime),
+                    endTime: new Date(raw.endTime),
+                    allDay: raw.allDay,
+                    id: itemSnap.key
+                };
+                _this.eventSource.push(data);
+                return false;
+            });
+        });
+    };
+    CalendarPage.prototype.addEvent = function () {
+        var _this = this;
+        var modal = this.modalCtrl.create('EventModalPage', { selectedDay: this.selectedDay });
+        modal.present();
+        modal.onDidDismiss(function (data) {
+            if (data) {
+                var eventData = data;
+                eventData.startTime = new Date(data.startTime);
+                eventData.endTime = new Date(data.endTime);
+                var events = _this.eventSource;
+                var dataSaving_1 = {
+                    title: eventData.title,
+                    startTime: eventData.startTime.toISOString(),
+                    endTime: eventData.endTime.toISOString(),
+                    allDay: eventData.allDay
+                };
+                _this.afAuth.authState.take(1).subscribe(function (auth) {
+                    _this.afDatabase.list(_this.calendarKey).push(dataSaving_1);
+                });
+            }
+        });
+    };
+    CalendarPage.prototype.onViewTitleChanged = function (title) {
+        this.viewTitle = title;
+    };
+    CalendarPage.prototype.onEventSelected = function (event) {
+        var _this = this;
+        var subtitle = '';
+        if (!event.allDay) {
+            var start = __WEBPACK_IMPORTED_MODULE_2_moment__(event.startTime).format('LLLL');
+            var end = __WEBPACK_IMPORTED_MODULE_2_moment__(event.endTime).format('LLLL');
+            subtitle = 'From: ' + start + '<br>To: ' + end;
+        }
+        else {
+            var start = __WEBPACK_IMPORTED_MODULE_2_moment__(event.startTime).format('LL');
+            var end = __WEBPACK_IMPORTED_MODULE_2_moment__(event.endTime).format('LL');
+            subtitle = 'From: ' + start + '<br>To: ' + end + '<br><br> All Day';
+        }
+        var alert = this.alertCtrl.create({
+            title: '' + event.title,
+            subTitle: subtitle,
+            buttons: [
+                { text: 'Delete',
+                    handler: function () {
+                        _this.afDatabase.list(_this.calendarKey).remove(event.id);
+                    } },
+                { text: 'OK' }
+            ]
+        });
+        alert.present();
+    };
+    CalendarPage.prototype.onTimeSelected = function (ev) {
+        this.selectedDay = ev.selectedTime;
+    };
     CalendarPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-calendar',template:/*ion-inline-start:"D:\Ionic App\ionic3-firebase-auth\src\pages\calendar\calendar.html"*/'<ion-content padding>\n    <p> Calendar </p>\n</ion-content>\n'/*ion-inline-end:"D:\Ionic App\ionic3-firebase-auth\src\pages\calendar\calendar.html"*/,
+            selector: 'page-calendar',template:/*ion-inline-start:"D:\Ionic App\ionic3-firebase-auth\src\pages\calendar\calendar.html"*/'<ion-content>\n    <ion-row>\n        <ion-col col-2>\n        </ion-col>\n        <ion-col col-8>\n            <h4 style=\'text-align: center\'> {{ viewTitle }} </h4>\n        </ion-col>\n        <ion-col col-2 style=\'text-align: right\'>\n            <button ion-button icon-only (click)="addEvent()">\n                <ion-icon name="add"></ion-icon>\n            </button>\n        </ion-col>\n    </ion-row>\n    <calendar [eventSource]="eventSource"\n        [calendarMode]="calendar.mode"\n        [currentDate]="calendar.currentDate"\n        (onEventSelected)="onEventSelected($event)"\n        (onTitleChanged)="onViewTitleChanged($event)"\n        (onTimeSelected)="onTimeSelected($event)"\n        step="30"\n        class="calendar">\n    </calendar>\n</ion-content>\n'/*ion-inline-end:"D:\Ionic App\ionic3-firebase-auth\src\pages\calendar\calendar.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_auth_service__["a" /* AuthService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_6_angularfire2_auth__["a" /* AngularFireAuth */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6_angularfire2_auth__["a" /* AngularFireAuth */]) === "function" && _f || Object])
     ], CalendarPage);
     return CalendarPage;
+    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=calendar.js.map
@@ -294,7 +427,6 @@ var CalendarPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_firebase__ = __webpack_require__(254);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_firebase__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__popover_profile_popover_profile__ = __webpack_require__(255);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__popover_goal_popover_goal__ = __webpack_require__(614);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -339,7 +471,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-
 
 
 
@@ -434,20 +565,12 @@ var ChatBoxPage = (function () {
         }, 150);
     };
     ChatBoxPage.prototype.showGoal = function () {
-        // let alert = this.alertCtrl.create({
-        //     title: 'Goal',
-        //     subTitle: this.chatter.publicGoal ? 'Public' : 'Private',
-        //     buttons: ['Dismiss']
-        //     });
-        // alert.present();
-        var popover = this.popoverController.create(__WEBPACK_IMPORTED_MODULE_8__popover_goal_popover_goal__["a" /* PopoverGoalPage */], {
-            name: this.nameTo,
-            academicGoal: this.chatter.academicGoal,
-            workGoal: this.chatter.workGoal,
-            socialGoal: this.chatter.socialGoal,
-            lifestyleGoal: this.chatter.lifestyleGoal,
-        }, { showBackdrop: true, cssClass: "custom-popover" });
-        popover.present();
+        var alert = this.alertCtrl.create({
+            title: 'Goal',
+            subTitle: this.chatter.publicGoal ? 'Public' : 'Private',
+            buttons: ['Dismiss']
+        });
+        alert.present();
     };
     ChatBoxPage.prototype.showProfile = function (ev) {
         return __awaiter(this, void 0, void 0, function () {
@@ -507,16 +630,22 @@ var ChatBoxPage = (function () {
     ], ChatBoxPage.prototype, "msgInput", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */]),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */]) === "function" && _a || Object)
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */])
     ], ChatBoxPage.prototype, "content", void 0);
     ChatBoxPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-chat-box',template:/*ion-inline-start:"D:\Ionic App\ionic3-firebase-auth\src\pages\chat-box\chat-box.html"*/'<ion-content padding (change)="content.scrollToBottom()" [ngClass]=\'{"blur": toBlur}\'>\n    <div ion-fixed>\n        <ion-row class=\'chatter\' align-items-center>\n            <ion-col col-8 class=\'chat-name\'> {{nameTo}} </ion-col>\n            <ion-col col-4 style=\'text-align: right;\'> \n                <button ion-button icon-only clear (click)=\'showProfile($event)\' [disabled] = \'chatter.publicProfile != true\'>\n                    <ion-icon name="contact" style=\'font-size: 16px;\'></ion-icon>\n                </button>\n                <button ion-button icon-only clear (click)=\'showGoal()\'[disabled] = \'chatter.publicGoal != true\'>\n                    <ion-icon name="checkmark-circle-outline" style=\'font-size: 16px;\'></ion-icon>\n                </button>\n            </ion-col>\n        </ion-row>\n    </div>\n\n    <ion-grid>\n        <ion-row *ngFor="let msg of allChat" align-items-center> \n            <ion-col offset-4 col-8 *ngIf=\'msg.sender==auth.name\' class=\'message right\'>\n                <p> {{msg.message}} </p>\n                <p style=\'font-size:2px\' align=\'right\'> {{msg.timestamp | date:\'dd/MM/yyyy &nbsp; HH:mm\'}}</p>\n            </ion-col>\n            <ion-col col-8 *ngIf=\'msg.sender!=auth.name\' class=\'message left\'>\n                <p> {{msg.message}} </p>\n                <p style=\'font-size:2px\' align=\'right\'> {{msg.timestamp | date:\'dd/MM/yyyy &nbsp; HH:mm\'}}</p>\n           </ion-col>\n        </ion-row>\n    </ion-grid>\n</ion-content>\n\n<form [formGroup]="chatForm">\n    <ion-footer [ngClass]=\'{"blur": toBlur}\'>\n    	<ion-grid>\n    		<ion-row align-items-center>\n    			<ion-col col-10>\n    				<ion-input type="text" placeholder="Type a message" name="message" formControlName=\'message\' #msgInput></ion-input>\n    			</ion-col>\n    			<ion-col col-2>\n                    <button ion-button icon-only clear (click)="sendMessage()" [disabled]=\'!msgInput.value\'>\n        				<ion-icon name="paper-plane" style=\'font-size: 24px;\'></ion-icon>\n                    </button>\n    			</ion-col>\n    		</ion-row>\n    	</ion-grid>\n    </ion-footer>\n</form>\n'/*ion-inline-end:"D:\Ionic App\ionic3-firebase-auth\src\pages\chat-box\chat-box.html"*/,
+            selector: 'page-chat-box',template:/*ion-inline-start:"D:\Ionic App\ionic3-firebase-auth\src\pages\chat-box\chat-box.html"*/'<ion-content padding (change)="content.scrollToBottom()" [ngClass]=\'{"blur": toBlur}\'>\n    <div ion-fixed>\n        <ion-row class=\'chatter\' align-items-center>\n            <ion-col col-8 class=\'chat-name\'> {{nameTo}} </ion-col>\n            <ion-col col-4 style=\'text-align: right;\'> \n                <button ion-button icon-only clear (click)=\'showProfile($event)\' [disabled] = \'chatter.publicProfile != true\'>\n                    <ion-icon name="contact" style=\'font-size: 16px;\'></ion-icon>\n                </button>\n                <button ion-button icon-only clear (click)=\'showGoal($event)\'[disabled] = \'chatter.publicGoal != true\'>\n                    <ion-icon name="checkmark-circle-outline" style=\'font-size: 16px;\'></ion-icon>\n                </button>\n            </ion-col>\n        </ion-row>\n    </div>\n\n    <ion-grid>\n        <ion-row *ngFor="let msg of allChat" align-items-center> \n            <ion-col offset-4 col-8 *ngIf=\'msg.sender==auth.name\' class=\'message right\'>\n                <p> {{msg.message}} </p>\n                <p style=\'font-size:2px\' align=\'right\'> {{msg.timestamp | date:\'dd/MM/yyyy &nbsp; HH:mm\'}}</p>\n            </ion-col>\n            <ion-col col-8 *ngIf=\'msg.sender!=auth.name\' class=\'message left\'>\n                <p> {{msg.message}} </p>\n                <p style=\'font-size:2px\' align=\'right\'> {{msg.timestamp | date:\'dd/MM/yyyy &nbsp; HH:mm\'}}</p>\n           </ion-col>\n        </ion-row>\n    </ion-grid>\n</ion-content>\n\n<form [formGroup]="chatForm">\n    <ion-footer [ngClass]=\'{"blur": toBlur}\'>\n    	<ion-grid>\n    		<ion-row align-items-center>\n    			<ion-col col-10>\n    				<ion-input type="text" placeholder="Type a message" name="message" formControlName=\'message\' #msgInput></ion-input>\n    			</ion-col>\n    			<ion-col col-2>\n                    <button ion-button icon-only clear (click)="sendMessage()" [disabled]=\'!msgInput.value\'>\n        				<ion-icon name="paper-plane" style=\'font-size: 24px;\'></ion-icon>\n                    </button>\n    			</ion-col>\n    		</ion-row>\n    	</ion-grid>\n    </ion-footer>\n</form>\n'/*ion-inline-end:"D:\Ionic App\ionic3-firebase-auth\src\pages\chat-box\chat-box.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__angular_forms__["FormBuilder"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_forms__["FormBuilder"]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__["a" /* AngularFireAuth */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__["a" /* AngularFireAuth */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* PopoverController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* PopoverController */]) === "function" && _j || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */],
+            __WEBPACK_IMPORTED_MODULE_5__angular_forms__["FormBuilder"],
+            __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__["a" /* AngularFireAuth */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* PopoverController */]])
     ], ChatBoxPage);
     return ChatBoxPage;
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j;
 }());
 
 //# sourceMappingURL=chat-box.js.map
@@ -613,12 +742,12 @@ var ChatPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'page-chat',template:/*ion-inline-start:"D:\Ionic App\ionic3-firebase-auth\src\pages\chat\chat.html"*/'<ion-content padding>\n    <ion-row align-items-center>\n        <ion-col col-10>\n            <p> Please select the user you would like to chat with. </p>\n        </ion-col>\n        <ion-col col-2>\n            <button ion-button icon-only clear (click)=\'usersReload()\'>\n                <ion-icon ion-icon name=\'sync\'>\n                </ion-icon> \n            </button>\n        </ion-col>\n    </ion-row>\n    \n    <ion-list>\n        <ion-item *ngFor="let user of users" (click)="toChat(user)" align-items-center>\n            <button ion-button clear full class="btn-align"> \n                <ion-icon name=\'contact\' style=\'font-size: 24px;\'></ion-icon> \n                &nbsp; <p> {{user.name}} </p>\n            </button>\n        </ion-item>\n    </ion-list>\n</ion-content>\n'/*ion-inline-end:"D:\Ionic App\ionic3-firebase-auth\src\pages\chat\chat.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["a" /* AngularFireAuth */],
             __WEBPACK_IMPORTED_MODULE_5__services_auth_service__["a" /* AuthService */],
             __WEBPACK_IMPORTED_MODULE_4_angularfire2_database__["a" /* AngularFireDatabase */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ToastController */]])
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ToastController */]])
     ], ChatPage);
     return ChatPage;
 }());
@@ -755,12 +884,12 @@ var ProfileEditPage = (function () {
             selector: 'page-profile-edit',template:/*ion-inline-start:"D:\Ionic App\ionic3-firebase-auth\src\pages\profile-edit\profile-edit.html"*/'<ion-content padding>\n    <form [formGroup]="profileEditForm">\n\n    <ion-card class="error-card" [hidden]="!profileEditError">\n    <ion-card-header> Error </ion-card-header>\n    <ion-card-content> \n        <p class="label-pad"> {{ profileEditError }} </p>\n    </ion-card-content>\n    </ion-card>\n\n    <ion-card>\n    <ion-card-header> Basic information </ion-card-header>\n    <ion-card-content> \n        <ion-row align-items-center>\n            <ion-label class="label-pad label-header" > Age </ion-label>\n        </ion-row>\n        <ion-row align-items-center radio-group formControlName="isSEN" required>\n            <ion-item no-padding>\n                <ion-input name="age" type="number" [value]="currentUser?.age" \n                [placeholder]="currentUser?.age ? currentUser.age : \'Not stated\' " formControlName="age" pattern="[0-9]*" [min]="5" [max]="30"></ion-input>\n            </ion-item>\n        </ion-row> \n\n        <ion-row align-items-center>\n            <ion-label class="label-pad label-header" > Profile Visibility </ion-label>\n        </ion-row>\n        <ion-row align-items-center radio-group formControlName="publicProfile" required>\n            <ion-col>\n                <ion-item no-padding>\n                    <ion-label class="label-pad"> Public </ion-label>\n                    <ion-radio [value]="true"></ion-radio>\n                </ion-item>\n            </ion-col>\n            <ion-col>\n                <ion-item no-padding>\n                    <ion-label class="label-pad"> Private </ion-label>\n                    <ion-radio [value]="false"></ion-radio>\n                </ion-item>\n            </ion-col>\n        </ion-row> \n    </ion-card-content>\n    </ion-card>\n\n    <ion-card>\n    <ion-card-header> SEN information </ion-card-header>\n    <ion-card-content> \n        <ion-row align-items-center>\n            <ion-label class="label-pad label-header" > Is SEN </ion-label>\n        </ion-row>\n        <ion-row align-items-center radio-group formControlName="isSEN" required>\n            <ion-col>\n                <ion-item no-padding>\n                    <ion-label class="label-pad"> Yes </ion-label>\n                    <ion-radio [value]="true"></ion-radio>\n                </ion-item>\n            </ion-col>\n            <ion-col>\n                <ion-item no-padding>\n                    <ion-label class="label-pad"> No </ion-label>\n                    <ion-radio [value]="false"></ion-radio>\n                </ion-item>\n            </ion-col>\n        </ion-row> \n\n        <ion-row align-items-center>\n            <ion-label class="label-pad label-header"> SEN type </ion-label>\n        </ion-row>\n        <ion-row align-items-center>\n            <ion-col>\n                <ion-item no-padding>\n                    <ion-label class="label-pad"> ADHD </ion-label>\n                    <ion-checkbox \n                    [checked]="currentUser?.ADHD && profileEditForm.value.isSEN" formControlName="ADHD"\n                    [disabled]="!profileEditForm.value.isSEN"> \n                    </ion-checkbox>\n                </ion-item>\n            </ion-col>\n            <ion-col>\n                <ion-item no-padding>\n                    <ion-label class="label-pad"> PH </ion-label>\n                    <ion-checkbox \n                    [checked]="currentUser?.PH && profileEditForm.value.isSEN" formControlName="PH"\n                    [disabled]="!profileEditForm.value.isSEN"> \n                    </ion-checkbox>\n                </ion-item>\n            </ion-col>\n        </ion-row>\n        <ion-row align-items-center>\n            <ion-col>\n                <ion-item no-padding>\n                    <ion-label class="label-pad"> SL </ion-label>\n                    <ion-checkbox \n                    [checked]="currentUser?.SL && profileEditForm.value.isSEN" formControlName="SL"\n                    [disabled]="!profileEditForm.value.isSEN"> \n                    </ion-checkbox>\n                </ion-item>\n            </ion-col>\n            <ion-col>\n                <ion-item no-padding>\n                    <ion-label class="label-pad"> AU </ion-label>\n                    <ion-checkbox \n                    [checked]="currentUser?.AU && profileEditForm.value.isSEN" formControlName="AU"\n                    [disabled]="!profileEditForm.value.isSEN"> \n                    </ion-checkbox>\n                </ion-item>\n            </ion-col>\n        </ion-row> \n        <ion-row align-items-center>\n            <ion-col>\n                <ion-item no-padding>\n                    <ion-label class="label-pad"> VI </ion-label>\n                    <ion-checkbox \n                    [checked]="currentUser?.VI && profileEditForm.value.isSEN" formControlName="VI"\n                    [disabled]="!profileEditForm.value.isSEN"> \n                    </ion-checkbox>\n                </ion-item>\n            </ion-col>\n            <ion-col>\n                <ion-item no-padding>\n                    <ion-label class="label-pad"> SI </ion-label>\n                    <ion-checkbox \n                    [checked]="currentUser?.SI && profileEditForm.value.isSEN" formControlName="SI"\n                    [disabled]="!profileEditForm.value.isSEN"> \n                    </ion-checkbox>\n                </ion-item>\n            </ion-col>\n        </ion-row>  \n        <ion-row align-items-center>\n            <ion-col>\n                <ion-item no-padding>\n                    <ion-label class="label-pad"> HI </ion-label>\n                    <ion-checkbox \n                    [checked]="currentUser?.HI && profileEditForm.value.isSEN" formControlName="HI"\n                    [disabled]="!profileEditForm.value.isSEN"> \n                    </ion-checkbox>\n                </ion-item>\n            </ion-col>\n            <ion-col>\n                <ion-item no-padding>\n                    <ion-label class="label-pad"> MI </ion-label>\n                    <ion-checkbox \n                    [checked]="currentUser?.MI && profileEditForm.value.isSEN" formControlName="MI"\n                    [disabled]="!profileEditForm.value.isSEN"> \n                    </ion-checkbox>\n                </ion-item>\n            </ion-col>\n        </ion-row> \n    </ion-card-content>\n    </ion-card>\n\n    </form>\n\n    <button ion-button block [disabled]="!profileEditForm.valid" (click)="editProfile()"> Submit </button>\n</ion-content>\n'/*ion-inline-end:"D:\Ionic App\ionic3-firebase-auth\src\pages\profile-edit\profile-edit.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_5__services_auth_service__["a" /* AuthService */],
             __WEBPACK_IMPORTED_MODULE_8__angular_forms__["FormBuilder"],
             __WEBPACK_IMPORTED_MODULE_0__angular_core__["ChangeDetectorRef"],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ToastController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */],
             __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */]])
     ], ProfileEditPage);
@@ -807,10 +936,9 @@ var PairUpPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'page-pair-up',template:/*ion-inline-start:"D:\Ionic App\ionic3-firebase-auth\src\pages\pair-up\pair-up.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title> PAIR UP</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <ion-tabs id="tabs" selectedIndex=\'0\'>\n        <ion-tab [root]="tabChat" tabTitle="Chat" tabIcon="chatboxes"></ion-tab>\n        <ion-tab [root]="tabCalendar" tabTitle="Calendar" tabIcon="calendar"></ion-tab>\n    </ion-tabs>\n</ion-content>'/*ion-inline-end:"D:\Ionic App\ionic3-firebase-auth\src\pages\pair-up\pair-up.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
     ], PairUpPage);
     return PairUpPage;
-    var _a, _b;
 }());
 
 //# sourceMappingURL=pair-up.js.map
@@ -844,7 +972,7 @@ var ToDoListPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'page-to-do-list',template:/*ion-inline-start:"D:\Ionic App\ionic3-firebase-auth\src\pages\to-do-list\to-do-list.html"*/'<ion-content padding>\n    <p> To-do list </p>\n</ion-content>\n'/*ion-inline-end:"D:\Ionic App\ionic3-firebase-auth\src\pages\to-do-list\to-do-list.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
     ], ToDoListPage);
     return ToDoListPage;
 }());
@@ -889,7 +1017,7 @@ var PairUpNoLoginPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'page-pair-up-no-login',template:/*ion-inline-start:"D:\Ionic App\ionic3-firebase-auth\src\pages\pair-up-no-login\pair-up-no-login.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Pair Up</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <h6> Please log-in to access the pair-up function. </h6>\n</ion-content>\n'/*ion-inline-end:"D:\Ionic App\ionic3-firebase-auth\src\pages\pair-up-no-login\pair-up-no-login.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
     ], PairUpNoLoginPage);
     return PairUpNoLoginPage;
 }());
@@ -1029,15 +1157,19 @@ var AuthService = (function () {
 var map = {
 	"../pages/calendar/calendar.module": [
 		602,
-		8
+		20
 	],
 	"../pages/chat-box/chat-box.module": [
 		603,
-		7
+		19
 	],
 	"../pages/chat/chat.module": [
 		604,
-		6
+		18
+	],
+	"../pages/event-modal/event-modal.module": [
+		753,
+		12
 	],
 	"../pages/goal-edit/goal-edit.module": [
 		256
@@ -1047,23 +1179,23 @@ var map = {
 	],
 	"../pages/login/login.module": [
 		605,
-		5
+		17
 	],
 	"../pages/note/note.module": [
 		606,
-		0
+		11
 	],
 	"../pages/pair-up-no-login/pair-up-no-login.module": [
 		607,
-		4
+		16
 	],
 	"../pages/pair-up/pair-up.module": [
 		608,
-		3
+		15
 	],
 	"../pages/profile-edit/profile-edit.module": [
 		609,
-		2
+		14
 	],
 	"../pages/profile/profile.module": [
 		261
@@ -1073,7 +1205,7 @@ var map = {
 	],
 	"../pages/to-do-list/to-do-list.module": [
 		610,
-		1
+		13
 	]
 };
 function webpackAsyncContext(req) {
@@ -1133,9 +1265,9 @@ var PopoverProfilePage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
             selector: 'app-popover-profile',template:/*ion-inline-start:"D:\Ionic App\ionic3-firebase-auth\src\pages\popover-profile\popover-profile.html"*/'<ion-grid style=\'padding-left: 20px\'>\n    <h5 class="label-pad"> Profile of {{ name }} </h5>\n\n    <ion-row align-items-center>\n        <ion-col col-5>\n            <ion-label class="label-pad"> Age </ion-label>\n        </ion-col>\n        <ion-col col-7>\n            <p *ngIf = "age"> {{ age }} </p>\n            <p *ngIf = "!age">  Not stated  </p>\n        </ion-col>\n    </ion-row> \n\n    <ion-row align-items-center>\n        <ion-col col-5>\n            <ion-label class="label-pad"> Is SEN </ion-label>\n        </ion-col>\n        <ion-col col-7>\n            <p *ngIf = "isSEN == true"> Yes </p>\n            <p *ngIf = "isSEN == false">  No  </p>\n            <p *ngIf = "isSEN == null">  Not stated  </p>\n        </ion-col>\n    </ion-row>\n\n    <ion-row align-items-center>\n        <ion-col col-5>\n            <ion-label class="label-pad"> SEN type </ion-label>\n        </ion-col>\n        <ion-col col-7>\n            <p> {{ SENlist }} </p>\n        </ion-col>\n    </ion-row>\n\n    <ion-row align-items-center>\n        <ion-col offset-6 col-2>\n            <button ion-button clear (click)=\'close()\'> Dismiss </button>\n        </ion-col>\n    </ion-row>\n</ion-grid>\n'/*ion-inline-end:"D:\Ionic App\ionic3-firebase-auth\src\pages\popover-profile\popover-profile.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0_ionic_angular__["k" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["m" /* PopoverController */],
-            __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["o" /* ViewController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0_ionic_angular__["l" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["n" /* PopoverController */],
+            __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["q" /* ViewController */]])
     ], PopoverProfilePage);
     return PopoverProfilePage;
 }());
@@ -1290,13 +1422,13 @@ var GoalEditPage = (function () {
             selector: 'page-goal-edit',template:/*ion-inline-start:"D:\Ionic App\ionic3-firebase-auth\src\pages\goal-edit\goal-edit.html"*/'<ion-content padding>\n    <form [formGroup]="goalEditForm">\n\n    <ion-card class="error-card" [hidden]="!profileEditError">\n    <ion-card-header> Error </ion-card-header>\n    <ion-card-content> \n        <p class="label-pad"> {{ profileEditError }} </p>\n    </ion-card-content>\n    </ion-card>\n\n    <ion-card>\n    <ion-card-header> Short term goals </ion-card-header>\n    <ion-card-content> \n        <ion-row align-items-center>\n            <ion-label class="label-pad label-header" > Goal Visibility </ion-label>\n        </ion-row>\n        <ion-row align-items-center radio-group formControlName="publicGoal" required>\n            <ion-col>\n                <ion-item no-padding>\n                    <ion-label class="label-pad"> Public </ion-label>\n                    <ion-radio [value]="true"></ion-radio>\n                </ion-item>\n            </ion-col>\n            <ion-col>\n                <ion-item no-padding>\n                    <ion-label class="label-pad"> Private </ion-label>\n                    <ion-radio [value]="false"></ion-radio>\n                </ion-item>\n            </ion-col>\n        </ion-row> \n\n        <ion-row align-items-center>\n            <ion-checkbox [checked]=\'currentUser?.academicGoal !="" \' #aGoalBox> \n            </ion-checkbox>\n            <ion-label class="label-pad"> Academic (e.g. exam, test etc.) </ion-label>\n        </ion-row>\n        <ion-row align-items-center>\n            <ion-item no-padding>\n            <ion-input formControlName="academicGoal" [disabled]="!aGoalBox.value" [value]="aGoalBox.value ? currentUser?.academicGoal : \'\' " placeholder="Not stated"> </ion-input>\n            </ion-item>\n        </ion-row> \n        <ion-row align-items-center>\n            <ion-checkbox [checked]=\'currentUser?.workGoal != ""\' #wGoalBox> \n            </ion-checkbox>\n            <ion-label class="label-pad"> Work (e.g. find a job etc.) </ion-label>\n        </ion-row>\n        <ion-row align-items-center>\n            <ion-item no-padding>\n            <ion-input formControlName="workGoal" [disabled]="!wGoalBox.value" [value]="wGoalBox.value ? currentUser?.workGoal : \'\' " placeholder="Not stated"> </ion-input>\n            </ion-item>\n        </ion-row> \n        <ion-row align-items-center>\n            <ion-checkbox [checked]=\'currentUser?.socialGoal !="" \' #sGoalBox> \n            </ion-checkbox>\n            <ion-label class="label-pad"> Social (e.g. make new friends etc.) </ion-label>\n        </ion-row>\n        <ion-row align-items-center>\n            <ion-item no-padding>\n            <ion-input formControlName="socialGoal" [disabled]="!sGoalBox.value" [value]="sGoalBox.value ? currentUser?.socialGoal : \'\' " placeholder="Not stated"> </ion-input>\n            </ion-item>\n        </ion-row> \n        <ion-row align-items-center>\n            <ion-checkbox [checked]=\'currentUser?.lifestyleGoal !="" \' #lGoalBox> \n            </ion-checkbox>\n            <ion-label class="label-pad"> Lifestyle (e.g. punctuality etc.) </ion-label>\n        </ion-row>\n        <ion-row align-items-center>\n            <ion-item no-padding>\n            <ion-input formControlName="lifestyleGoal" [disabled]="!lGoalBox.value" [value]="lGoalBox.value ? currentUser?.lifestyleGoal : \'\' " placeholder="Not stated"> </ion-input>\n            </ion-item>\n        </ion-row> \n    </ion-card-content>\n    </ion-card>\n\n    </form>\n\n    <button ion-button block [disabled]="!goalEditForm.valid" (click)="editProfile()"> Submit </button>\n</ion-content>\n'/*ion-inline-end:"D:\Ionic App\ionic3-firebase-auth\src\pages\goal-edit\goal-edit.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_5__services_auth_service__["a" /* AuthService */],
             __WEBPACK_IMPORTED_MODULE_8__angular_forms__["FormBuilder"],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */],
             __WEBPACK_IMPORTED_MODULE_0__angular_core__["ChangeDetectorRef"],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ToastController */],
             __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */]])
     ], GoalEditPage);
     return GoalEditPage;
@@ -1341,7 +1473,7 @@ var SettingTabPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'page-setting-tab',template:/*ion-inline-start:"D:\Ionic App\ionic3-firebase-auth\src\pages\setting-tab\setting-tab.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title> SETTING </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <ion-tabs id="tabs">\n        <ion-tab [root]="tabProfile" tabTitle="Profile" tabIcon="contact"></ion-tab>\n        <ion-tab [root]="tabGoal" tabTitle="Goal" tabIcon="checkmark-circle-outline"></ion-tab>\n    </ion-tabs>\n</ion-content>'/*ion-inline-end:"D:\Ionic App\ionic3-firebase-auth\src\pages\setting-tab\setting-tab.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
     ], SettingTabPage);
     return SettingTabPage;
 }());
@@ -1411,8 +1543,8 @@ var GoalPage = (function () {
             selector: 'page-goal',template:/*ion-inline-start:"D:\Ionic App\ionic3-firebase-auth\src\pages\goal\goal.html"*/'<ion-content padding>\n    <ion-card>\n    <ion-card-header> Short term goals </ion-card-header>\n    <ion-card-content>\n        <ion-row align-items-center no-lines class="bottom-border">\n            <ion-col col-5>\n                <ion-label class="label-pad"> Goal Visibility </ion-label>\n            </ion-col>\n            <ion-col col-7>\n                <p *ngIf = "currentUser.publicGoal == true"> Public </p>\n                <p *ngIf = "currentUser.publicGoal != true">  Private  </p>\n            </ion-col>\n        </ion-row> \n\n        <ion-row align-items-center>\n            <ion-col col-5>\n                <ion-label class="label-pad"> Academic </ion-label>\n            </ion-col>\n            <ion-col col-7>\n                <p *ngIf = "!currentUser.academicGoal" style="color:#bbbbbb;"> Not stated </p>\n                <p *ngIf = "currentUser.academicGoal">  {{ currentUser.academicGoal }}  </p>\n            </ion-col>\n        </ion-row>\n\n        <ion-row align-items-center>\n            <ion-col col-5>\n                <ion-label class="label-pad"> Work </ion-label>\n            </ion-col>\n            <ion-col col-7>\n                <p *ngIf = "!currentUser.workGoal" style="color:#bbbbbb;"> Not stated </p>\n                <p *ngIf = "currentUser.workGoal">  {{ currentUser.workGoal }}  </p>\n            </ion-col>\n        </ion-row>\n\n        <ion-row align-items-center>\n            <ion-col col-5>\n                <ion-label class="label-pad"> Social </ion-label>\n            </ion-col>\n            <ion-col col-7>\n                <p *ngIf = "!currentUser.socialGoal" style="color:#bbbbbb;"> Not stated </p>\n                <p *ngIf = "currentUser.socialGoal">  {{ currentUser.socialGoal }}  </p>\n            </ion-col>\n        </ion-row>\n\n        <ion-row align-items-center>\n            <ion-col col-5>\n                <ion-label class="label-pad"> Lifestyle </ion-label>\n            </ion-col>\n            <ion-col col-7>\n                <p *ngIf = "!currentUser.lifestyleGoal" style="color:#bbbbbb;"> Not stated </p>\n                <p *ngIf = "currentUser.lifestyleGoal">  {{ currentUser.lifestyleGoal }}  </p>\n            </ion-col>\n        </ion-row>\n    </ion-card-content>\n    </ion-card>\n\n    <button ion-button block (click)="toGoalEditPage()"> Edit Goal </button>\n \n</ion-content>\n'/*ion-inline-end:"D:\Ionic App\ionic3-firebase-auth\src\pages\goal\goal.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_4__services_auth_service__["a" /* AuthService */],
             __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */]])
     ], GoalPage);
@@ -1754,7 +1886,7 @@ var ComponentsInputsListPage = (function () {
     ComponentsInputsListPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"D:\Ionic App\ionic3-firebase-auth\src\pages\components\inputs\components.inputs-list.html"*/'<ion-header>\n\n	<ion-navbar>\n\n		<ion-title>Inputs</ion-title>\n\n	</ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n	<ion-list>\n\n		<ion-item (click)="fixedLabelsTapped()">\n\n			Fixed Labels\n\n		</ion-item>\n\n		<ion-item (click)="floatingLabelsTapped()">\n\n			Floating Labels\n\n		</ion-item>\n\n		<ion-item (click)="inlineLabelsTapped()">\n\n			Inline Labels\n\n		</ion-item>\n\n		<ion-item (click)="insetLabelsTapped()">\n\n			Inset Labels\n\n		</ion-item>\n\n		<ion-item (click)="placeholderLabelsTapped()">\n\n			Placeholder Labels\n\n		</ion-item>\n\n		<ion-item (click)="stackedLabelsTapped()">\n\n			Stacked Labels\n\n		</ion-item>\n\n	</ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Ionic App\ionic3-firebase-auth\src\pages\components\inputs\components.inputs-list.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */]])
     ], ComponentsInputsListPage);
     return ComponentsInputsListPage;
 }());
@@ -2252,7 +2384,7 @@ var ComponentsActionSheetPage = (function () {
     ComponentsActionSheetPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"D:\Ionic App\ionic3-firebase-auth\src\pages\components\actionsheet\components.actionsheet.html"*/'<ion-header>\n\n	<ion-navbar>\n\n		<ion-title>Action Sheet</ion-title>\n\n	</ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n	<button ion-button block (click)="openActionSheet()">\n\n		Show Action Sheet\n\n	</button>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Ionic App\ionic3-firebase-auth\src\pages\components\actionsheet\components.actionsheet.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */]])
     ], ComponentsActionSheetPage);
     return ComponentsActionSheetPage;
@@ -2330,7 +2462,7 @@ var WordpressItemPage = (function () {
     WordpressItemPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"D:\Ionic App\ionic3-firebase-auth\src\pages\wordpress\item\wordpress.item.html"*/'<ion-header>\n\n	<ion-navbar>\n\n		<button ion-button menuToggle>\n\n			<ion-icon name="menu"></ion-icon>\n\n		</button>\n\n		<ion-title>WP post</ion-title>\n\n	</ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n	<ion-card>\n\n		<img *ngIf="!!post.image" src="{{post.image}}"/>\n\n		<ion-card-content>\n\n			<h2 class="card-title">{{post.title}}</h2>\n\n			<div [innerHTML]="post.content"></div>\n\n			<p><strong>{{post.author}}</strong> - {{post.date}}</p>\n\n			<p><i>[{{post.tags.join(\', \')}}]</i></p>\n\n		</ion-card-content>\n\n	</ion-card>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Ionic App\ionic3-firebase-auth\src\pages\wordpress\item\wordpress.item.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
     ], WordpressItemPage);
     return WordpressItemPage;
 }());
@@ -2435,11 +2567,11 @@ var HomePage = (function () {
             selector: 'page-home',template:/*ion-inline-start:"D:\Ionic App\ionic3-firebase-auth\src\pages\home\home.html"*/'<ion-header>\n\n	<ion-navbar>\n\n        <ion-buttons left> <button (click)="toSettingTabPage()" class="navbutton" *ngIf="auth.authenticated" float-right> <ion-icon name="ios-construct"></ion-icon> </button> \n\n        </ion-buttons>\n\n		<ion-title class="navtitle">\n\n			SENSE\n\n		</ion-title>\n\n        <ion-buttons right> <button (click)="toLoginPage()" class="navbutton" *ngIf="!auth.authenticated"> <ion-icon name="ios-log-in"></ion-icon> </button> \n\n        </ion-buttons>\n\n        <ion-buttons right> <button (click)="logout()" class="navbutton" *ngIf="auth.authenticated"> <ion-icon name="ios-log-out"></ion-icon> </button> \n\n        </ion-buttons>\n\n	</ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content no-bounce padding>\n\n	<h2 align="center"> Welcome to Sense!</h2>\n\n	<p align="center" *ngIf="auth.authenticated"> Please choose either one: </p>\n\n    <p align="center" *ngIf="!auth.authenticated"> Please log-in to access the following functions: </p>\n\n	<ion-grid class="home-grid">\n\n	<ion-row class="home-row1">\n\n		<ion-col col-6>\n\n			<button ion-button full name="forum" style="height: 100%;" >\n\n				Forum\n\n			</button>\n\n		</ion-col>\n\n		<ion-col col-6>\n\n            <button ion-button full name="pairup" style="height: 100%;" *ngIf="!auth.authenticated" (click)="toPairUpNoLoginPage() ">\n\n                Pair-up\n\n            </button>\n\n			<button ion-button full name="pairup" style="height: 100%;" *ngIf="auth.authenticated" (click)="toPairUpPage()">\n\n				Pair-up\n\n			</button>\n\n		</ion-col>\n\n	</ion-row>\n\n    </ion-grid>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Ionic App\ionic3-firebase-auth\src\pages\home\home.html"*/,
             providers: [],
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Nav */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Nav */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_4__services_auth_service__["a" /* AuthService */],
             __WEBPACK_IMPORTED_MODULE_7_angularfire2_auth__["a" /* AngularFireAuth */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ToastController */],
             __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__["a" /* AngularFireDatabase */]])
     ], HomePage);
     return HomePage;
@@ -2491,12 +2623,14 @@ var HomePage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__pages_setting_tab_setting_tab_module__ = __webpack_require__(262);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__pages_popover_profile_popover_profile_module__ = __webpack_require__(601);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__pages_popover_goal_popover_goal_module__ = __webpack_require__(613);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36_ionic2_calendar__ = __webpack_require__(616);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -2573,7 +2707,8 @@ var AppModule = (function () {
                         { loadChildren: '../pages/profile-edit/profile-edit.module#ProfileEditPageModule', name: 'ProfileEditPage', segment: 'profile-edit', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/setting-tab/setting-tab.module#SettingTabPageModule', name: 'SettingTabPage', segment: 'setting-tab', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/to-do-list/to-do-list.module#ToDoListPageModule', name: 'ToDoListPage', segment: 'to-do-list', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/to-do-list/to-do-list.module#ToDoListPageModule', name: 'ToDoListPage', segment: 'to-do-list', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/event-modal/event-modal.module#EventModalPageModule', name: 'EventModalPage', segment: 'event-modal', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_0__agm_core__["a" /* AgmCoreModule */].forRoot(),
@@ -2593,7 +2728,8 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_33__pages_setting_tab_setting_tab_module__["SettingTabPageModule"],
                 __WEBPACK_IMPORTED_MODULE_20__pages_goal_edit_goal_edit_module__["GoalEditPageModule"],
                 __WEBPACK_IMPORTED_MODULE_34__pages_popover_profile_popover_profile_module__["a" /* PopoverProfilePageModule */],
-                __WEBPACK_IMPORTED_MODULE_35__pages_popover_goal_popover_goal_module__["a" /* PopoverGoalPageModule */]
+                __WEBPACK_IMPORTED_MODULE_35__pages_popover_goal_popover_goal_module__["a" /* PopoverGoalPageModule */],
+                __WEBPACK_IMPORTED_MODULE_36_ionic2_calendar__["a" /* NgCalendarModule */],
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_6_ionic_angular__["e" /* IonicApp */]],
             entryComponents: [
@@ -2614,7 +2750,7 @@ var AppModule = (function () {
                 { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["ErrorHandler"], useClass: __WEBPACK_IMPORTED_MODULE_6_ionic_angular__["f" /* IonicErrorHandler */] },
                 __WEBPACK_IMPORTED_MODULE_15_angularfire2_auth__["a" /* AngularFireAuth */],
                 __WEBPACK_IMPORTED_MODULE_17__services_auth_service__["a" /* AuthService */],
-                __WEBPACK_IMPORTED_MODULE_6_ionic_angular__["n" /* ToastController */]
+                __WEBPACK_IMPORTED_MODULE_6_ionic_angular__["p" /* ToastController */]
             ]
         })
     ], AppModule);
@@ -2812,7 +2948,7 @@ var ComponentsListPage = (function () {
     ComponentsListPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"D:\Ionic App\ionic3-firebase-auth\src\pages\components\list\components.list.html"*/'<ion-header>\n\n	<ion-navbar>\n\n		<button ion-button menuToggle>\n\n			<ion-icon name="menu"></ion-icon>\n\n		</button>\n\n		<ion-title>Components</ion-title>\n\n	</ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n	<ion-list>\n\n		<ion-item (click)="actionsheetTapped()">\n\n			Action Sheet\n\n		</ion-item>\n\n		<ion-item (click)="alertsTapped()">\n\n			Alerts\n\n		</ion-item>\n\n		<ion-item (click)="badgesTapped()">\n\n			Badges\n\n		</ion-item>\n\n		<ion-item (click)="buttonsTapped()">\n\n			Buttons\n\n		</ion-item>\n\n		<ion-item (click)="cardsTapped()">\n\n			Cards\n\n		</ion-item>\n\n		<ion-item (click)="checkboxTapped()">\n\n			Checkbox\n\n		</ion-item>\n\n		<ion-item (click)="floatingActionButtonsTapped()">\n\n			Floating Action Buttons\n\n		</ion-item>\n\n		<ion-item (click)="gesturesTapped()">\n\n			Gestures\n\n		</ion-item>\n\n		<ion-item (click)="gridTapped()">\n\n			Grid\n\n		</ion-item>\n\n		<ion-item (click)="iconsTapped()">\n\n			Icons\n\n		</ion-item>\n\n		<ion-item (click)="inputsTapped()">\n\n			Inputs\n\n		</ion-item>\n\n	</ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Ionic App\ionic3-firebase-auth\src\pages\components\list\components.list.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */]])
     ], ComponentsListPage);
     return ComponentsListPage;
 }());
@@ -3092,7 +3228,7 @@ var MapsService = (function () {
     };
     MapsService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */]])
     ], MapsService);
     return MapsService;
 }());
@@ -3372,7 +3508,7 @@ var WordpressListPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"D:\Ionic App\ionic3-firebase-auth\src\pages\wordpress\list\wordpress.list.html"*/'<ion-header>\n\n	<ion-navbar>\n\n		<button ion-button menuToggle>\n\n			<ion-icon name="menu"></ion-icon>\n\n		</button>\n\n		<ion-title>WP posts</ion-title>\n\n	</ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n	<ion-card *ngFor="let post of posts" (click)="itemTapped(post)">\n\n		<img *ngIf="!!post.image" src="{{post.image}}"/>\n\n		<ion-card-content>\n\n			<h2 class="card-title">{{post.title}}</h2>\n\n			<p>{{post.brief | trimHtml | truncate : 140}}</p>\n\n		</ion-card-content>\n\n	</ion-card>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Ionic App\ionic3-firebase-auth\src\pages\wordpress\list\wordpress.list.html"*/,
             providers: [__WEBPACK_IMPORTED_MODULE_2__wordpress_service__["a" /* WordpressService */]]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__wordpress_service__["a" /* WordpressService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__wordpress_service__["a" /* WordpressService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */]])
     ], WordpressListPage);
     return WordpressListPage;
 }());
@@ -3499,13 +3635,13 @@ var MyApp = (function () {
         this.nav.setRoot(page.component);
     };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* Nav */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* Nav */])
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* Nav */]),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* Nav */])
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"D:\Ionic App\ionic3-firebase-auth\src\app\app.html"*/'<ion-nav id="nav" [root]="rootPage"></ion-nav>\n\n\n\n'/*ion-inline-end:"D:\Ionic App\ionic3-firebase-auth\src\app\app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* Platform */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* Platform */],
             __WEBPACK_IMPORTED_MODULE_1__ionic_native_status_bar__["a" /* StatusBar */],
             __WEBPACK_IMPORTED_MODULE_5__services_auth_service__["a" /* AuthService */]])
     ], MyApp);
@@ -3595,8 +3731,8 @@ var PopoverGoalPageModule = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PopoverGoalPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ionic_angular__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3608,38 +3744,306 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+/**
+ * Generated class for the PopoverGoalPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
 var PopoverGoalPage = (function () {
-    function PopoverGoalPage(navParams, popoverController, viewCtrl) {
+    function PopoverGoalPage(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.popoverController = popoverController;
-        this.viewCtrl = viewCtrl;
-        this.name = null;
-        this.academicGoal = null;
-        this.workGoal = null;
-        this.socialGoal = null;
-        this.lifestyleGoal = null;
     }
-    PopoverGoalPage.prototype.ngOnInit = function () {
-        this.name = this.navParams.get('name');
-        this.academicGoal = this.navParams.get('academicGoal');
-        this.workGoal = this.navParams.get('workGoal');
-        this.socialGoal = this.navParams.get('socialGoal');
-        this.lifestyleGoal = this.navParams.get('lifestyleGoal');
-    };
-    PopoverGoalPage.prototype.close = function () {
-        this.viewCtrl.dismiss();
+    PopoverGoalPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad PopoverGoalPage');
     };
     PopoverGoalPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
-            selector: 'app-popover-goal',template:/*ion-inline-start:"D:\Ionic App\ionic3-firebase-auth\src\pages\popover-goal\popover-goal.html"*/'<ion-grid style=\'padding-left: 20px\'>\n    <h5 class="label-pad"> Goals of {{ name }} </h5>\n\n    <ion-row align-items-center>\n        <ion-col col-5>\n            <ion-label class="label-pad"> Academic </ion-label>\n        </ion-col>\n        <ion-col col-7>\n            <p *ngIf = "!academicGoal"> Not stated </p>\n            <p *ngIf = "academicGoal">  {{ academicGoal }}  </p>\n        </ion-col>\n    </ion-row>\n\n    <ion-row align-items-center>\n        <ion-col col-5>\n            <ion-label class="label-pad"> Work </ion-label>\n        </ion-col>\n        <ion-col col-7>\n            <p *ngIf = "!workGoal"> Not stated </p>\n            <p *ngIf = "workGoal">  {{ workGoal }}  </p>\n        </ion-col>\n    </ion-row>\n\n    <ion-row align-items-center>\n        <ion-col col-5>\n            <ion-label class="label-pad"> Social </ion-label>\n        </ion-col>\n        <ion-col col-7>\n            <p *ngIf = "!socialGoal"> Not stated </p>\n            <p *ngIf = "socialGoal">  {{ socialGoal }}  </p>\n        </ion-col>\n    </ion-row>\n\n    <ion-row align-items-center>\n        <ion-col col-5>\n            <ion-label class="label-pad"> Lifestyle </ion-label>\n        </ion-col>\n        <ion-col col-7>\n            <p *ngIf = "!lifestyleGoal"> Not stated </p>\n            <p *ngIf = "lifestyleGoal">  {{ lifestyleGoal }}  </p>\n        </ion-col>\n    </ion-row>\n\n    <ion-row align-items-center>\n        <ion-col offset-6 col-2>\n            <button ion-button clear (click)=\'close()\'> Dismiss </button>\n        </ion-col>\n    </ion-row>\n</ion-grid>\n'/*ion-inline-end:"D:\Ionic App\ionic3-firebase-auth\src\pages\popover-goal\popover-goal.html"*/,
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'page-popover-goal',template:/*ion-inline-start:"D:\Ionic App\ionic3-firebase-auth\src\pages\popover-goal\popover-goal.html"*/'<ion-grid style=\'padding-left: 20px\'>\n    <h5 class="label-pad"> Goals of {{ name }} </h5>\n\n    <ion-row align-items-center>\n        <ion-col col-5>\n            <ion-label class="label-pad"> Academic </ion-label>\n        </ion-col>\n        <ion-col col-7>\n            <p *ngIf = "!academicGoal"> Not stated </p>\n            <p *ngIf = "academicGoal">  {{ academicGoal }}  </p>\n        </ion-col>\n    </ion-row>\n\n    <ion-row align-items-center>\n        <ion-col col-5>\n            <ion-label class="label-pad"> Work </ion-label>\n        </ion-col>\n        <ion-col col-7>\n            <p *ngIf = "!workGoal"> Not stated </p>\n            <p *ngIf = "workGoal">  {{ workGoal }}  </p>\n        </ion-col>\n    </ion-row>\n\n    <ion-row align-items-center>\n        <ion-col col-5>\n            <ion-label class="label-pad"> Social </ion-label>\n        </ion-col>\n        <ion-col col-7>\n            <p *ngIf = "!socialGoal"> Not stated </p>\n            <p *ngIf = "socialGoal">  {{ socialGoal }}  </p>\n        </ion-col>\n    </ion-row>\n\n    <ion-row align-items-center>\n        <ion-col col-5>\n            <ion-label class="label-pad"> Lifestyle </ion-label>\n        </ion-col>\n        <ion-col col-7>\n            <p *ngIf = "!lifestyleGoal"> Not stated </p>\n            <p *ngIf = "lifestyleGoal">  {{ lifestyleGoal }}  </p>\n        </ion-col>\n    </ion-row>\n\n    <ion-row align-items-center>\n        <ion-col offset-6 col-2>\n            <button ion-button clear (click)=\'close()\'> Dismiss </button>\n        </ion-col>\n    </ion-row>\n</ion-grid>\n'/*ion-inline-end:"D:\Ionic App\ionic3-firebase-auth\src\pages\popover-goal\popover-goal.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["k" /* NavParams */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["m" /* PopoverController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["m" /* PopoverController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["o" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["o" /* ViewController */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
     ], PopoverGoalPage);
     return PopoverGoalPage;
-    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=popover-goal.js.map
+
+/***/ }),
+
+/***/ 620:
+/***/ (function(module, exports) {
+
+/* (ignored) */
+
+/***/ }),
+
+/***/ 752:
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./af": 628,
+	"./af.js": 628,
+	"./ar": 629,
+	"./ar-dz": 630,
+	"./ar-dz.js": 630,
+	"./ar-kw": 631,
+	"./ar-kw.js": 631,
+	"./ar-ly": 632,
+	"./ar-ly.js": 632,
+	"./ar-ma": 633,
+	"./ar-ma.js": 633,
+	"./ar-sa": 634,
+	"./ar-sa.js": 634,
+	"./ar-tn": 635,
+	"./ar-tn.js": 635,
+	"./ar.js": 629,
+	"./az": 636,
+	"./az.js": 636,
+	"./be": 637,
+	"./be.js": 637,
+	"./bg": 638,
+	"./bg.js": 638,
+	"./bm": 639,
+	"./bm.js": 639,
+	"./bn": 640,
+	"./bn.js": 640,
+	"./bo": 641,
+	"./bo.js": 641,
+	"./br": 642,
+	"./br.js": 642,
+	"./bs": 643,
+	"./bs.js": 643,
+	"./ca": 644,
+	"./ca.js": 644,
+	"./cs": 645,
+	"./cs.js": 645,
+	"./cv": 646,
+	"./cv.js": 646,
+	"./cy": 647,
+	"./cy.js": 647,
+	"./da": 648,
+	"./da.js": 648,
+	"./de": 649,
+	"./de-at": 650,
+	"./de-at.js": 650,
+	"./de-ch": 651,
+	"./de-ch.js": 651,
+	"./de.js": 649,
+	"./dv": 652,
+	"./dv.js": 652,
+	"./el": 653,
+	"./el.js": 653,
+	"./en-au": 654,
+	"./en-au.js": 654,
+	"./en-ca": 655,
+	"./en-ca.js": 655,
+	"./en-gb": 656,
+	"./en-gb.js": 656,
+	"./en-ie": 657,
+	"./en-ie.js": 657,
+	"./en-il": 658,
+	"./en-il.js": 658,
+	"./en-nz": 659,
+	"./en-nz.js": 659,
+	"./eo": 660,
+	"./eo.js": 660,
+	"./es": 661,
+	"./es-do": 662,
+	"./es-do.js": 662,
+	"./es-us": 663,
+	"./es-us.js": 663,
+	"./es.js": 661,
+	"./et": 664,
+	"./et.js": 664,
+	"./eu": 665,
+	"./eu.js": 665,
+	"./fa": 666,
+	"./fa.js": 666,
+	"./fi": 667,
+	"./fi.js": 667,
+	"./fo": 668,
+	"./fo.js": 668,
+	"./fr": 669,
+	"./fr-ca": 670,
+	"./fr-ca.js": 670,
+	"./fr-ch": 671,
+	"./fr-ch.js": 671,
+	"./fr.js": 669,
+	"./fy": 672,
+	"./fy.js": 672,
+	"./gd": 673,
+	"./gd.js": 673,
+	"./gl": 674,
+	"./gl.js": 674,
+	"./gom-latn": 675,
+	"./gom-latn.js": 675,
+	"./gu": 676,
+	"./gu.js": 676,
+	"./he": 677,
+	"./he.js": 677,
+	"./hi": 678,
+	"./hi.js": 678,
+	"./hr": 679,
+	"./hr.js": 679,
+	"./hu": 680,
+	"./hu.js": 680,
+	"./hy-am": 681,
+	"./hy-am.js": 681,
+	"./id": 682,
+	"./id.js": 682,
+	"./is": 683,
+	"./is.js": 683,
+	"./it": 684,
+	"./it.js": 684,
+	"./ja": 685,
+	"./ja.js": 685,
+	"./jv": 686,
+	"./jv.js": 686,
+	"./ka": 687,
+	"./ka.js": 687,
+	"./kk": 688,
+	"./kk.js": 688,
+	"./km": 689,
+	"./km.js": 689,
+	"./kn": 690,
+	"./kn.js": 690,
+	"./ko": 691,
+	"./ko.js": 691,
+	"./ky": 692,
+	"./ky.js": 692,
+	"./lb": 693,
+	"./lb.js": 693,
+	"./lo": 694,
+	"./lo.js": 694,
+	"./lt": 695,
+	"./lt.js": 695,
+	"./lv": 696,
+	"./lv.js": 696,
+	"./me": 697,
+	"./me.js": 697,
+	"./mi": 698,
+	"./mi.js": 698,
+	"./mk": 699,
+	"./mk.js": 699,
+	"./ml": 700,
+	"./ml.js": 700,
+	"./mn": 701,
+	"./mn.js": 701,
+	"./mr": 702,
+	"./mr.js": 702,
+	"./ms": 703,
+	"./ms-my": 704,
+	"./ms-my.js": 704,
+	"./ms.js": 703,
+	"./mt": 705,
+	"./mt.js": 705,
+	"./my": 706,
+	"./my.js": 706,
+	"./nb": 707,
+	"./nb.js": 707,
+	"./ne": 708,
+	"./ne.js": 708,
+	"./nl": 709,
+	"./nl-be": 710,
+	"./nl-be.js": 710,
+	"./nl.js": 709,
+	"./nn": 711,
+	"./nn.js": 711,
+	"./pa-in": 712,
+	"./pa-in.js": 712,
+	"./pl": 713,
+	"./pl.js": 713,
+	"./pt": 714,
+	"./pt-br": 715,
+	"./pt-br.js": 715,
+	"./pt.js": 714,
+	"./ro": 716,
+	"./ro.js": 716,
+	"./ru": 717,
+	"./ru.js": 717,
+	"./sd": 718,
+	"./sd.js": 718,
+	"./se": 719,
+	"./se.js": 719,
+	"./si": 720,
+	"./si.js": 720,
+	"./sk": 721,
+	"./sk.js": 721,
+	"./sl": 722,
+	"./sl.js": 722,
+	"./sq": 723,
+	"./sq.js": 723,
+	"./sr": 724,
+	"./sr-cyrl": 725,
+	"./sr-cyrl.js": 725,
+	"./sr.js": 724,
+	"./ss": 726,
+	"./ss.js": 726,
+	"./sv": 727,
+	"./sv.js": 727,
+	"./sw": 728,
+	"./sw.js": 728,
+	"./ta": 729,
+	"./ta.js": 729,
+	"./te": 730,
+	"./te.js": 730,
+	"./tet": 731,
+	"./tet.js": 731,
+	"./tg": 732,
+	"./tg.js": 732,
+	"./th": 733,
+	"./th.js": 733,
+	"./tl-ph": 734,
+	"./tl-ph.js": 734,
+	"./tlh": 735,
+	"./tlh.js": 735,
+	"./tr": 736,
+	"./tr.js": 736,
+	"./tzl": 737,
+	"./tzl.js": 737,
+	"./tzm": 738,
+	"./tzm-latn": 739,
+	"./tzm-latn.js": 739,
+	"./tzm.js": 738,
+	"./ug-cn": 740,
+	"./ug-cn.js": 740,
+	"./uk": 741,
+	"./uk.js": 741,
+	"./ur": 742,
+	"./ur.js": 742,
+	"./uz": 743,
+	"./uz-latn": 744,
+	"./uz-latn.js": 744,
+	"./uz.js": 743,
+	"./vi": 745,
+	"./vi.js": 745,
+	"./x-pseudo": 746,
+	"./x-pseudo.js": 746,
+	"./yo": 747,
+	"./yo.js": 747,
+	"./zh-cn": 748,
+	"./zh-cn.js": 748,
+	"./zh-hk": 749,
+	"./zh-hk.js": 749,
+	"./zh-tw": 750,
+	"./zh-tw.js": 750
+};
+function webpackContext(req) {
+	return __webpack_require__(webpackContextResolve(req));
+};
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) // check for number or string
+		throw new Error("Cannot find module '" + req + "'.");
+	return id;
+};
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 752;
 
 /***/ }),
 
@@ -3719,11 +4123,11 @@ var LoginPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'page-login',template:/*ion-inline-start:"D:\Ionic App\ionic3-firebase-auth\src\pages\login\login.html"*/'<ion-header>\n\n	<ion-navbar>\n\n		<ion-title>Log in</ion-title>\n\n	</ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content class="page-login">\n\n	<form (ngSubmit)="login()" [formGroup]="loginForm">\n\n		<ion-list inset>\n\n\n\n			<ion-item [ngClass]="{ invalid: usernameErrors.hasError(\'*\', [\'touched\', \'dirty\']) }">\n\n				<ion-input type="text" placeholder="User Name" formControlName="username" required></ion-input>\n\n			</ion-item>\n\n\n\n			<div ngxErrors="username" #usernameErrors="ngxErrors">\n\n				<div [ngxError]="[\'minlength\', \'required\']" [when]="[\'touched\',\'dirty\']">Please enter a valid user name.</div>\n\n			</div>\n\n\n\n			<ion-item [ngClass]="{ invalid: passwordErrors.hasError(\'*\', [\'touched\']) }">\n\n				<ion-input type="password" placeholder="Password" formControlName="password"></ion-input>\n\n			</ion-item>\n\n\n\n			<div ngxErrors="password" #passwordErrors="ngxErrors">\n\n				<div [ngxError]="[\'minlength\', \'required\']" [when]="[\'touched\']">It should be at least 6 characters.</div>\n\n			</div>\n\n		</ion-list>\n\n\n\n		<div padding-horizontal>\n\n			<div class="form-error">{{loginError}}</div>\n\n\n\n			<button ion-button full type="submit" [disabled]="!loginForm.valid">Log in</button>\n\n\n\n			<ion-list>\n\n				<button ion-button icon-left block clear (click)="signup()">\n\n					<ion-icon name="person-add"></ion-icon>\n\n					Sign up\n\n				</button>\n\n			</ion-list>\n\n		</div>\n\n	</form>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Ionic App\ionic3-firebase-auth\src\pages\login\login.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_4__services_auth_service__["a" /* AuthService */],
             __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormBuilder"],
             __WEBPACK_IMPORTED_MODULE_6_angularfire2_auth__["a" /* AngularFireAuth */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* ToastController */]])
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* ToastController */]])
     ], LoginPage);
     return LoginPage;
 }());
