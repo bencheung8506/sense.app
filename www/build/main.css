@@ -33432,6 +33432,20 @@ page-chat-box .blur {
   transition: -webkit-filter 100ms linear;
 }
 
+page-comment-create .label-pad {
+  padding-left: 10px;
+}
+
+page-comment-create .text-area {
+  border: solid 1px #cccccc;
+  -webkit-box-shadow: 0.5px 0.5px 0.5px 0.5px #cccccc inset;
+  box-shadow: 0.5px 0.5px 0.5px 0.5px #cccccc inset;
+}
+
+page-comment-create .scroll-content {
+  padding-bottom: 0 !important;
+}
+
 page-goal .label-pad {
   padding-left: 10px;
 }
@@ -33448,6 +33462,10 @@ page-goal .row[no-lines].bottom-border {
 page-goal-edit .row[no-lines].bottom-border {
   border-bottom: 1.5px solid;
   border-bottom-color: #cccccc;
+}
+
+page-goal-edit .label-pad {
+  padding-left: 10px;
 }
 
 page-home .scroll-content {
@@ -33509,6 +33527,24 @@ page-popover-goal .label-pad {
 
 page-popover-profile .label-pad {
   padding-left: 10px;
+}
+
+page-post .post {
+  background-color: #a8d2f0;
+}
+
+page-post-create .label-pad {
+  padding-left: 10px;
+}
+
+page-post-create .text-area {
+  border: solid 1px #cccccc;
+  -webkit-box-shadow: 0.5px 0.5px 0.5px 0.5px #cccccc inset;
+  box-shadow: 0.5px 0.5px 0.5px 0.5px #cccccc inset;
+}
+
+page-post-create .scroll-content {
+  padding-bottom: 0 !important;
 }
 
 page-profile .label-pad {

@@ -13,6 +13,7 @@ import 'rxjs/add/operator/take';
 import { PairUpPage } from '../pair-up/pair-up';
 import { PairUpNoLoginPage } from '../pair-up-no-login/pair-up-no-login';
 import { SettingTabPage } from '../setting-tab/setting-tab';
+import { ForumPage } from '../forum/forum';
 
 @Component({
     selector: 'page-home',
@@ -67,5 +68,9 @@ export class HomePage {
 
 	toSettingTabPage(){
 		this.navCtrl.push(SettingTabPage);
+	}
+
+	toForumPage(){
+		this.navCtrl.push(ForumPage);
 	}
 }

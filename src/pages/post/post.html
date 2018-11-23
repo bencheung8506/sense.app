@@ -1,0 +1,45 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title> POST </ion-title>
+        <ion-buttons right> 
+            <button ion-button icon-only clear (click)='leaveComment(id)'> <ion-icon name="chatbubbles" style='color: white'> </ion-icon> </button> 
+        </ion-buttons>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <h1> {{post.title}} </h1>
+    <ion-card>
+        <ion-card-content class='post'>
+            <ion-row align-items-center>
+                <ion-col col-4>
+                    <h2 style='font-size: 20px'> {{post.creatorName}}</h2>
+                </ion-col>
+                <ion-col col-8>
+                    <p style='color: gray;' align='right'>{{post.timestamp_created | date:'dd/MM/yyyy HH:mm'}}</p>
+                </ion-col>
+            </ion-row>
+            <ion-row align-items-center style='padding-left: 10px;'>
+                    <p style='white-space: pre-line'>{{post.content}} </p>
+            </ion-row>
+        </ion-card-content>
+    </ion-card>
+    <h4> Comments: {{post.comment}} </h4>
+    <ion-list *ngFor="let cm of allComments" align-items-center> 
+        <ion-card>
+            <ion-card-content>
+                <ion-row align-items-center>
+                    <ion-col col-4>
+                        <h2 style='font-size: 20px'> {{cm.name}}</h2>
+                    </ion-col>
+                    <ion-col col-8>
+                        <p style='color: gray;' align='right'>{{cm.timestamp | date:'dd/MM/yyyy HH:mm'}}</p>
+                    </ion-col>
+                </ion-row>
+                <ion-row align-items-center style='padding-left: 10px;'>
+                    <p style='white-space: pre-line'> {{cm.content}} </p>
+                </ion-row>
+            </ion-card-content>
+        </ion-card>
+   </ion-list>
+</ion-content>

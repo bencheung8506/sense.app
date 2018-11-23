@@ -3,29 +3,29 @@
     <ion-card-header> Basic information </ion-card-header>
     <ion-card-content> 
         <ion-row align-items-center>
-            <ion-col col-5>
+            <ion-col col-6>
                 <ion-label class="label-pad"> User name </ion-label>
             </ion-col>
-            <ion-col col-7>
+            <ion-col col-6>
                 <p> {{ auth.email.split('@sense.com')[0] }} </p>
             </ion-col>
         </ion-row>
 
         <ion-row align-items-center>
-            <ion-col col-5>
+            <ion-col col-6>
                 <ion-label class="label-pad"> Age </ion-label>
             </ion-col>
-            <ion-col col-7>
+            <ion-col col-6>
                 <p *ngIf = "currentUser.age"> {{ currentUser.age }} </p>
                 <p *ngIf = "!currentUser.age">  Not stated  </p>
             </ion-col>
         </ion-row> 
 
         <ion-row align-items-center>
-            <ion-col col-5>
+            <ion-col col-6>
                 <ion-label class="label-pad"> Profile Visibility </ion-label>
             </ion-col>
-            <ion-col col-7>
+            <ion-col col-6>
                 <p *ngIf = "currentUser.publicProfile == true"> Public </p>
                 <p *ngIf = "currentUser.publicProfile != true">  Private  </p>
             </ion-col>
@@ -37,10 +37,10 @@
     <ion-card-header> SEN information </ion-card-header>
     <ion-card-content>
         <ion-row align-items-center>
-            <ion-col col-5>
+            <ion-col col-6>
                 <ion-label class="label-pad"> Is SEN </ion-label>
             </ion-col>
-            <ion-col col-7>
+            <ion-col col-6>
                 <p *ngIf = "currentUser.isSEN == true"> Yes </p>
                 <p *ngIf = "currentUser.isSEN == false">  No  </p>
                 <p *ngIf = "currentUser.isSEN == null">  Not stated  </p>
@@ -48,10 +48,10 @@
         </ion-row>
 
         <ion-row align-items-center>
-            <ion-col col-5>
+            <ion-col col-6>
                 <ion-label class="label-pad"> SEN type </ion-label>
             </ion-col>
-            <ion-col col-7>
+            <ion-col col-6>
                 <p> {{ SENlist }} </p>
             </ion-col>
         </ion-row>

@@ -88,5 +88,13 @@
     "variables": {
       "URL_SCHEME": "io.ionic.starter"
     }
+  },
+  "cordova-plugin-ionic-wkkeyboard": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-ionic-wkkeyboard"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

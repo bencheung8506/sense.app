@@ -1,0 +1,24 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>CREATE POST</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding no-bounce>
+    <form [formGroup]="postCreateForm">
+        <ion-row align-items-center>
+            <ion-label class="label-pad"> Title </ion-label>
+        </ion-row>
+        <ion-row align-items-center>
+            <ion-input placeholder='Title' class='text-area' formControlName='title'> </ion-input>
+        </ion-row>
+        <ion-row align-items-center>
+            <ion-label class="label-pad"> Content </ion-label>
+        </ion-row>
+        <ion-row align-items-center>
+            <ion-textarea class='text-area' [attr.rows]='15' formControlName='content'> </ion-textarea>
+        </ion-row>
+    </form>
+
+    <button ion-button block (click)="submitPost()"> Submit </button>
+</ion-content>

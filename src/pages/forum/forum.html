@@ -1,0 +1,27 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>FORUM</ion-title>
+        <ion-buttons right> 
+            <button ion-button icon-only clear (click)='createPost()'> <ion-icon name='ios-create' style='color: white'> </ion-icon> </button> 
+        </ion-buttons>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list *ngFor="let post of allPosts?.slice().reverse()" align-items-center> 
+        <ion-card (click)='toPost(post.id)'>
+            <ion-card-content style='padding-bottom: 8px; padding-top: 15px;'>
+                <ion-row align-items-center>
+                    <ion-col col-2 style='text-align: center;'>
+                        <h1 style='color: #488aff;'> {{post.comment}} </h1>
+                    </ion-col>
+                    <ion-col col-10>
+                        <h1> {{post.title}} </h1>
+                        <p style='color: gray;'> Author: {{post.creatorName}}</p> 
+                        <p style='color: gray;'>Last update: {{post.timestamp_modified | date:'dd/MM/yyyy HH:mm'}}</p>
+                    </ion-col>
+                </ion-row>
+            </ion-card-content>
+        </ion-card>
+    </ion-list>
+</ion-content>

@@ -19,12 +19,12 @@
 	<ion-grid class="home-grid">
 	<ion-row class="home-row1">
 		<ion-col col-6>
-			<button ion-button full name="forum" style="height: 100%;" >
+			<button ion-button full name="forum" style="height: 100%;" (click)="toForumPage()">
 				Forum
 			</button>
 		</ion-col>
 		<ion-col col-6>
-            <button ion-button full name="pairup" style="height: 100%;" *ngIf="!auth.authenticated" (click)="toPairUpNoLoginPage() ">
+            <button ion-button full name="pairup" style="height: 100%;" *ngIf="!auth.authenticated" (click)="toPairUpNoLoginPage()">
                 Pair-up
             </button>
 			<button ion-button full name="pairup" style="height: 100%;" *ngIf="auth.authenticated" (click)="toPairUpPage()">

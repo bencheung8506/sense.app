@@ -43,9 +43,9 @@ page-chat-box {
 		bottom: 70px
 	}
 
-  .blur {
-    filter: blur(5px) grayscale(30%);
-    -webkit-filter: blur(5px) grayscale(30%);
-    transition: -webkit-filter 100ms linear;
-  }
+    .blur {
+	    filter: blur(5px) grayscale(30%);
+	    -webkit-filter: blur(5px) grayscale(30%);
+	    transition: -webkit-filter 100ms linear;
+    }
 }

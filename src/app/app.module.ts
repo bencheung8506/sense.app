@@ -40,6 +40,10 @@ import { SettingTabPageModule } from '../pages/setting-tab/setting-tab.module';
 import { PopoverProfilePageModule } from '../pages/popover-profile/popover-profile.module';
 import { PopoverGoalPageModule } from '../pages/popover-goal/popover-goal.module'
 import { NgCalendarModule } from 'ionic2-calendar';
+import { PostPageModule } from '../pages/post/post.module';
+import { PostCreatePageModule } from '../pages/post-create/post-create.module';
+import { ForumPageModule } from '../pages/forum/forum.module';
+import { CommentCreatePageModule } from '../pages/comment-create/comment-create.module';
 
 @NgModule({
 	declarations: [
@@ -60,6 +64,8 @@ import { NgCalendarModule } from 'ionic2-calendar';
 		IonicModule.forRoot(MyApp, {
 			tabsPlacement: 'top',
 			tabsHideOnSubPages: false,
+			scrollAssist: true,
+			autoFocusAssist: true
 		}),
 		AgmCoreModule.forRoot(),
 		AngularFireModule.initializeApp(firebaseConfig.fire),
@@ -80,6 +86,10 @@ import { NgCalendarModule } from 'ionic2-calendar';
 		PopoverProfilePageModule,
 		PopoverGoalPageModule,
 		NgCalendarModule,
+		ForumPageModule,
+		PostPageModule,
+		PostCreatePageModule,
+		CommentCreatePageModule
 	],
 	bootstrap: [IonicApp],
 	entryComponents: [
